@@ -66,7 +66,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/product/store',[ProductController::class,'ProductStore'])->name('product.store');
 
     // auto load subcategory route
-    Route::get('/get/subcategory/{category_id}',[ProductController::class,'GetSubCategory']);
+    Route::get('get/subcategory/{category_id}',[ProductController::class,'GetSubCategory']);
 
 
 
