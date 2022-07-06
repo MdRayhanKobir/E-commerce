@@ -34,11 +34,14 @@ class ProductController extends Controller
 
     public function GetSubCategory($category_id){
 
-        // $subcategory=SubCategory::find($category_id)->all();
-        // return response()->json($subcategory);
+        // // $subcategory=SubCategory::find($category_id)->all();
+        // // return response()->json($subcategory);
 
-        $subcat=DB::table('sub_categories')->where('category_id',$category_id)->get();
-        return json_encode($subcat);
+        // $subcat=DB::table('sub_categories')->where('category_id',$category_id)->get();
+        // return json_encode($subcat);
+
+        $subcategory=SubCategory::where('category_id',$category_id)->get();
+        return json_encode($subcategory);
 
 
 
