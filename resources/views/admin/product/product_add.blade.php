@@ -2,8 +2,7 @@
 
 
 @section('content')
-<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
     <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
             <a class="breadcrumb-item" href="index.html">Starlight</a>
@@ -276,7 +275,9 @@
 
     </div><!-- sl-mainpanel -->
     <!--  END: MAIN PANEL  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+
 
     <script type="text/javascript">
         $(document).ready(function(){
