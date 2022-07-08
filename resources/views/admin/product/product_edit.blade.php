@@ -1,7 +1,6 @@
 @extends('admin.admin_master')
-
 @section('title')
-Product Add -Page
+Product Edit -Page
 @endsection
 
 @section('content')
@@ -15,12 +14,10 @@ Product Add -Page
         <div class="sl-pagebody">
 
             <div class="card pd-20 pd-sm-40">
-                <h6 class="card-body-title">New Product Add
-                    <a href="{{ route('product.view') }}" class="btn btn-success btn-sm pull-right"> All Product</a>
-                </h6>
-                <p class="mg-b-20 mg-sm-b-30">New Prodcut Add From</p>
+                <h6 class="card-body-title">Product Update</h6>
+                {{-- <p class="mg-b-20 mg-sm-b-30">New Prodcut Add From</p> --}}
 
-                <form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('product.update',['id'=>$product->id]) }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-layout">
@@ -28,21 +25,14 @@ Product Add -Page
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Product Name: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="product_name"
-                                        placeholder="Enter Product Name">
-                                        @error('product_name')
-                                          <div class="alert text-danger">{{ $message }}</div>
-                                        @enderror
+                                    <input class="form-control" type="text" name="product_name" value="{{ $product->product_name }}">
+
                                 </div>
                             </div><!-- col-4 -->
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Product Code: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="product_code"
-                                        placeholder="Enter Product Code">
-                                        @error('product_code')
-                                        <div class="alert text-danger">{{ $message }}</div>
-                                      @enderror
+                                    <input class="form-control" type="text" name="product_code" value="{{ $product->product_code }}">
                                 </div>
                             </div><!-- col-4 -->
                         </div>
@@ -51,11 +41,7 @@ Product Add -Page
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Quantity: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" type="number" name="product_quantity"
-                                        placeholder="product quantity">
-                                        @error('product_quantity')
-                                        <div class="alert text-danger">{{ $message }}</div>
-                                      @enderror
+                                    <input class="form-control" type="number" name="product_quantity" value="{{ $product->product_quantity }}">
                                 </div>
                             </div><!-- col-4 -->
 
@@ -64,11 +50,7 @@ Product Add -Page
                                 <div class="form-group">
                                     <label class="form-control-label">Discount Price: <span
                                             class="tx-danger">*</span></label>
-                                    <input class="form-control" type="number" name="discount_price"
-                                        placeholder="Discount Price">
-                                        @error('discount_price')
-                                        <div class="alert text-danger">{{ $message }}</div>
-                                      @enderror
+                                    <input class="form-control" type="number" name="discount_price" value="{{ $product->discount_price }}">
                                 </div>
                             </div><!-- col-4 -->
                         </div>
@@ -81,7 +63,12 @@ Product Add -Page
                                     <select class="form-control select2" name="category_id">
                                         <option label="Choose Category"></option>
                                         @foreach ($category as $categories)
-                                            <option value="{{ $categories->id }}">{{ $categories->category_name }}</option>
+                                            <option value="{{ $categories->id }}"
+                                            <?php
+                                            if( $categories->id==$product->category_id ){
+                                                echo 'selected';
+                                            }
+                                            ?>>{{ $categories->category_name }}</option>
                                         @endforeach
 
                                     </select>
@@ -93,6 +80,14 @@ Product Add -Page
                                 <div class="form-group mg-b-10-force">
                                     <label class="form-control-label">Sub Category: <span class="tx-danger">*</span></label>
                                     <select class="form-control select2"name="subcategory_id">
+                                        @foreach ($subcategory as $subcategories)
+                                            <option value="{{ $subcategories->id }}"
+                                            <?php
+                                            if( $subcategories->id==$product->subcategory_id ){
+                                                echo 'selected';
+                                            }
+                                            ?>>{{ $subcategories->subcategory_name }}</option>
+                                        @endforeach
 
                                     </select>
                                 </div>
@@ -107,7 +102,12 @@ Product Add -Page
                                         <option label="Choose Brand"></option>
 
                                         @foreach ($brand as $brands)
-                                            <option value="{{ $brands->id }}">{{ $brands->brand_name }}</option>
+                                            <option value="{{ $brands->id }}"
+                                            <?php
+                                                if( $brands->id==$product->brand_id ){
+                                                echo 'selected';
+                                            }
+                                            ?>>{{ $brands->brand_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -119,11 +119,8 @@ Product Add -Page
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Product Size: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="product_size" id="size"
-                                        data-role="tagsinput">
-                                        @error('product_size')
-                                        <div class="alert text-danger">{{ $message }}</div>
-                                      @enderror
+                                    <input class="form-control" type="text" name="product_size" id="size"data-role="tagsinput" value="{{ $product->product_size }}">
+
 
                                 </div>
                             </div><!-- col-4 -->
@@ -132,11 +129,8 @@ Product Add -Page
                                 <div class="form-group">
                                     <label class="form-control-label">Product Color: <span
                                             class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="product_color" id="color"
-                                        data-role="tagsinput">
-                                        @error('product_color')
-                                        <div class="alert text-danger">{{ $message }}</div>
-                                      @enderror
+                                    <input class="form-control" type="text" name="product_color" id="color" data-role="tagsinput"value="{{ $product->product_color }}">
+
                                 </div>
                             </div><!-- col-4 -->
 
@@ -144,11 +138,7 @@ Product Add -Page
                                 <div class="form-group">
                                     <label class="form-control-label">Selling Price: <span
                                             class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="selling_price"
-                                        placeholder="Selling Price">
-                                        @error('selling_price')
-                                        <div class="alert text-danger">{{ $message }}</div>
-                                      @enderror
+                                    <input class="form-control" type="text" name="selling_price" value="{{ $product->selling_price }}">
                                 </div>
                             </div><!-- col-4 -->
                         </div>
@@ -160,7 +150,7 @@ Product Add -Page
                                     <label class="form-control-label">Product Details: <span
                                             class="tx-danger">*</span></label>
 
-                                    <textarea class="form-control" id="summernote" name="product_details"> </textarea>
+                                    <textarea class="form-control" id="summernote" name="product_details">{{ $product->product_details }} </textarea>
 
                                 </div>
                             </div><!-- col-4 -->
@@ -171,7 +161,7 @@ Product Add -Page
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-control-label">Video Link: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" name="video_link" placeholder="Video Link">
+                                    <input class="form-control" name="video_link" value="{{ $product->video_link }}">
                                 </div>
                             </div><!-- col-4 -->
                         </div>
@@ -185,9 +175,9 @@ Product Add -Page
                                             class="tx-danger">*</span></label>
                                     <label class="custom-file">
                                         <input type="file" id="file" class="custom-file-input" name="image_one"
-                                            onchange="readURL(this);" required="">
+                                            onchange="readURL(this);" >
                                         <span class="custom-file-control"></span>
-                                        <img src="#" id="one">
+                                        <img src="{{ asset($product->image_one) }}" id="one" style="width:80px;margin-top:5px;margin-bottom:5px;">
                                     </label>
 
                                 </div>
@@ -199,9 +189,9 @@ Product Add -Page
                                     <label class="form-control-label">Image Two: <span class="tx-danger">*</span></label>
                                     <label class="custom-file">
                                         <input type="file" id="file" class="custom-file-input" name="image_two"
-                                            onchange="readURL2(this);" required="">
+                                            onchange="readURL2(this);">
                                         <span class="custom-file-control"></span>
-                                        <img src="#" id="two">
+                                        <img src="{{ asset($product->image_two) }}" id="two"style="width:80px;margin-top:5px;margin-bottom:5px;">
                                     </label>
 
                                 </div>
@@ -216,9 +206,9 @@ Product Add -Page
                                             class="tx-danger">*</span></label>
                                     <label class="custom-file">
                                         <input type="file" id="file" class="custom-file-input"
-                                            name="image_three" onchange="readURL3(this);" required="">
+                                            name="image_three" onchange="readURL3(this);">
                                         <span class="custom-file-control"></span>
-                                        <img src="#" id="three">
+                                        <img src="{{ asset($product->image_three) }}" id="three"style="width:80px;margin-top:5px;margin-bottom:5px;">
                                     </label>
 
                                 </div>
@@ -233,7 +223,12 @@ Product Add -Page
 
                             <div class="col-lg-4">
                                 <label class="ckbox">
-                                    <input type="checkbox" name="main_slider" value="1">
+                                    <input type="checkbox" name="main_slider" value="1"
+                                    <?php
+                                    if($product->main_slider==1){
+                                         echo 'checked';
+                                    }
+                                    ?>>
                                     <span>Main Slider</span>
                                 </label>
 
@@ -241,7 +236,13 @@ Product Add -Page
 
                             <div class="col-lg-4">
                                 <label class="ckbox">
-                                    <input type="checkbox" name="hot_deal" value="1">
+                                    <input type="checkbox" name="hot_deal" value="1"
+                                    <?php
+                                    if($product->hot_deal==1){
+                                        echo 'checked';
+                                    }
+
+                                    ?>>
                                     <span>Hot Deal</span>
                                 </label>
 
@@ -251,7 +252,12 @@ Product Add -Page
 
                             <div class="col-lg-4">
                                 <label class="ckbox">
-                                    <input type="checkbox" name="best_rated" value="1">
+                                    <input type="checkbox" name="best_rated" value="1"
+                                    <?php
+                                    if($product->best_rated==1){
+                                        echo 'checked';
+                                    }
+                                    ?>>
                                     <span>Best Rated</span>
                                 </label>
 
@@ -262,7 +268,13 @@ Product Add -Page
                         <div class="row ">
                             <div class="col-lg-4">
                                 <label class="ckbox">
-                                    <input type="checkbox" name="trend" value="1">
+                                    <input type="checkbox" name="trend" value="1"
+                                    <?php
+                                    if($product->trend==1){
+                                        echo 'checked';
+                                    }
+
+                                    ?>>
                                     <span>Trend Product </span>
                                 </label>
 
@@ -270,7 +282,12 @@ Product Add -Page
 
                             <div class="col-lg-4">
                                 <label class="ckbox">
-                                    <input type="checkbox" name="mid_slider" value="1">
+                                    <input type="checkbox" name="mid_slider" value="1"
+                                    <?php
+                                    if ($product->mid_slider==1) {
+                                       echo 'checked';
+                                    }
+                                    ?>>
                                     <span>Mid Slider</span>
                                 </label>
 
@@ -278,7 +295,13 @@ Product Add -Page
 
                             <div class="col-lg-4">
                                 <label class="ckbox">
-                                    <input type="checkbox" name="hot_new" value="1">
+                                    <input type="checkbox" name="hot_new" value="1"
+                                    <?php
+                                    if($product->hot_new==1){
+                                        echo 'checked';
+                                    }
+
+                                    ?>>
                                     <span>Hot New </span>
                                 </label>
 
@@ -289,7 +312,7 @@ Product Add -Page
                         <br><br>
 
                         <div class="form-layout-footer">
-                            <button class="btn btn-info mg-r-5">Submit Form</button>
+                            <button class="btn btn-info mg-r-5">Update</button>
                             {{-- <button class="btn btn-secondary">Cancel</button> --}}
                         </div><!-- form-layout-footer -->
                     </div><!-- form-layout -->

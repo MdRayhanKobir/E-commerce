@@ -34,8 +34,8 @@ Brand View -Page
                 <td>{{$brands->brand_name}}</td>
                 <td><img src="{{asset('upload/brand/'.$brands->brand_log)}}" alt="" style="width:80px;"></td>
                 <td>
-                    <a href="{{ route('brand.edit',['id'=>$brands->id]) }}" class="btn btn-sm btn-info rounded">Edit</a>
-                    <a href="{{ route('brand.delete',['id'=>$brands->id]) }}" class="btn btn-sm btn-danger rounded" id="delete">Delete</a>
+                    <a href="{{ route('brand.edit',['id'=>$brands->id]) }}" class="btn btn-sm btn-info rounded"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('brand.delete',['id'=>$brands->id]) }}" class="btn btn-sm btn-danger rounded" id="delete"><i class="fa fa-trash"></i></a>
                 </td>
 
               </tr>

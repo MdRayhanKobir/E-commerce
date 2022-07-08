@@ -63,10 +63,19 @@ Route::prefix('admin')->group(function () {
     // Product all route
     Route::get('/product/view',[ProductController::class,'ProductView'])->name('product.view');
     Route::get('/product/add',[ProductController::class,'ProductAdd'])->name('product.add');
-    Route::get('/product/store',[ProductController::class,'ProductStore'])->name('product.store');
+    Route::post('/product/store',[ProductController::class,'ProductStore'])->name('product.store');
+    Route::get('/product/delete/{id}',[ProductController::class,'ProductDelete'])->name('product.delete');
+    Route::get('/product/details/{id}',[ProductController::class,'ProductDetails'])->name('product.details');
+    Route::get('/product/edit/{id}',[ProductController::class,'ProductEdit'])->name('product.edit');
+    Route::post('/product/update/{id}',[ProductController::class,'ProductUpdate'])->name('product.update');
+
 
     // auto load subcategory route
     Route::get('/get/subcategory/{category_id}',[ProductController::class,'GetSubCategory']);
+
+    // Product active inactive all Route
+    Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
+    Route::get('/product/active/{id}',[ProductController::class,'ProductActive'])->name('product.active');
 
 
 

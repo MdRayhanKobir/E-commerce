@@ -34,8 +34,8 @@ Cupon -Page
                 <td>{{ $cupons->cupon}}</td>
                 <td>{{ $cupons->discount}}%</td>
                 <td>
-                    <a href="{{ route('cupon.edit',['id'=>$cupons->id]) }}" class="btn btn-sm btn-info rounded">Edit</a>
-                    <a href="{{ route('cupon.delete',['id'=>$cupons->id]) }}" class="btn btn-sm btn-danger rounded" id="delete">Delete</a>
+                    <a href="{{ route('cupon.edit',['id'=>$cupons->id]) }}" class="btn btn-sm btn-info rounded"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('cupon.delete',['id'=>$cupons->id]) }}" class="btn btn-sm btn-danger rounded" id="delete"><i class="fa fa-trash"></i></a>
                 </td>
 
               </tr>

@@ -32,8 +32,8 @@ Category -Page
                 <td>{{$key+1}}</td>
                 <td>{{ $categories->category_name }}</td>
                 <td>
-                    <a href="{{ route('category.edit',['id'=>$categories->id]) }}" class="btn btn-sm btn-info rounded">Edit</a>
-                    <a href="{{ route('category.delete',['id'=>$categories->id]) }}" class="btn btn-sm btn-danger rounded" id="delete">Delete</a>
+                    <a href="{{ route('category.edit',['id'=>$categories->id]) }}" class="btn btn-sm btn-info rounded"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('category.delete',['id'=>$categories->id]) }}" class="btn btn-sm btn-danger rounded" id="delete"><i class="fa fa-trash"></i></a>
                 </td>
 
               </tr>

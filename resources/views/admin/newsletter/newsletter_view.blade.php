@@ -33,7 +33,7 @@ Newsletter -Page
                 <td>{{ \Carbon\Carbon::parse($newsletters->created_at)->diffForhumans() }}</td>
                 <td>
 
-                    <a href="{{ route('newsletter.delete',['id'=>$newsletters->id]) }}" class="btn btn-sm btn-danger rounded" id="delete">Delete</a>
+                    <a href="{{ route('newsletter.delete',['id'=>$newsletters->id]) }}" class="btn btn-sm btn-danger rounded" id="delete"><i class="fa fa-trash"></i></a>
                 </td>
 
               </tr>
