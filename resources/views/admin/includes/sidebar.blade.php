@@ -71,6 +71,19 @@
 
       <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
+          <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+          <span class="menu-item-label">Blog</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('postcategory.view') }}" class="nav-link">Blog Category</a></li>
+            <li class="nav-item"><a href="{{ route('blog.add') }}" class="nav-link">Add Post</a></li>
+            <li class="nav-item"><a href="{{ route('blog.view') }}" class="nav-link">View Post</a></li>
+          </ul>
+      </a><!-- sl-menu-link -->
+
+      <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
           <i class="menu-item-icon icon ion-ios-navigate-outline tx-24"></i>
           <span class="menu-item-label">Maps</span>
           <i class="menu-item-arrow fa fa-angle-down"></i>

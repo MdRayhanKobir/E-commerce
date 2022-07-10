@@ -19,8 +19,8 @@ class CreatePostsTable extends Migration
             $table->string('post_title_eng');
             $table->string('post_title_bang');
             $table->string('post_image');
-            $table->string('post_details_eng');
-            $table->string('post_details_bang');
+            $table->text('post_details_eng');
+            $table->text('post_details_bang');
             $table->timestamps();
         });
     }

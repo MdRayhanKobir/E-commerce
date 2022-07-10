@@ -198,8 +198,6 @@ Product Edit -Page
                             </div><!-- col-4 -->
 
 
-
-
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Image Three: <span

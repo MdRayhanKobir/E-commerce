@@ -226,26 +226,6 @@ class ProductController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function ProductInactive($id){
 
         DB::table('products')->where('id',$id)->update(['status'=>0]);

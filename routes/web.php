@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CuponController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\NewsletterController;
@@ -76,6 +77,21 @@ Route::prefix('admin')->group(function () {
     // Product active inactive all Route
     Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
     Route::get('/product/active/{id}',[ProductController::class,'ProductActive'])->name('product.active');
+
+    // post category all Route
+    Route::get('/post/category',[PostController::class,'PostCategoryView'])->name('postcategory.view');
+    Route::post('/post/category/store',[PostController::class,'PostCategoryStore'])->name('postcategory.store');
+    Route::get('/post/category/edit/{id}',[PostController::class,'PostCategoryEdit'])->name('postcategory.edit');
+    Route::post('/post/category/update/{id}',[PostController::class,'PostCategoryUpdate'])->name('postcategory.update');
+    Route::get('/post/category/delete/{id}',[PostController::class,'PostCategoryDelete'])->name('postcategory.delete');
+
+    // Blog all route
+    Route::get('/blog/view',[PostController::class,'BlogView'])->name('blog.view');
+    Route::get('/blog/add',[PostController::class,'BlogAdd'])->name('blog.add');
+    Route::post('/blog/store',[PostController::class,'BlogStore'])->name('blog.store');
+    Route::get('/blog/edit/{id}',[PostController::class,'BlogEdit'])->name('blog.edit');
+    Route::post('/blog/update/{id}',[PostController::class,'BlogUpdate'])->name('blog.update');
+    Route::get('/blog/delete/{id}',[PostController::class,'BlogDelete'])->name('blog.delete');
 
 
 
