@@ -10,16 +10,23 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Setting\AdminSetiingController;
+use App\Http\Controllers\UserBackend\IndexController;
 use App\Models\Frontend\Newsletter;
 
 Route::get('/', function () {
     return view('frontend.index');
 });
 
+// User Profile all Route
+
+Route::get('/password/change',[IndexController::class,'UserPassChange'])->name('userpassword.change');
+Route::post('/password/update',[IndexController::class,'UserPassUpdate'])->name('userpassword.update');
+
+
 // Logout Route
 Route::get('/logout', [AdminSetiingController::class, 'Logout'])->name('logout');
 
-
+// Admin group all route
 Route::prefix('admin')->group(function () {
 
     // Reset password for admin route

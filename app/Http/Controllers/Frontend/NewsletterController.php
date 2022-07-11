@@ -10,10 +10,10 @@ class NewsletterController extends Controller
 {
 
 
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:admin');
+    // }
 
     public function NewsLetterView(){
         $newsletter=Newsletter::all();

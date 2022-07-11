@@ -3,6 +3,8 @@
 Home| Page
 @endsection
 @section('content')
+@include('frontend.pages.header')
+@include('frontend.pages.banner')
 @php
     $featured=DB::table('products')->where('status',1)->orderBy('id','desc')->limit(8)->get();
     $trend=DB::table('products')->where('status',1)->where('trend',1)->orderBy('id','desc')->limit(8)->get();
@@ -13,13 +15,6 @@ Home| Page
                ->where('products.status',1)->where('hot_deal',1)->orderBy('id','desc')->limit(3)->get();
 @endphp
 
-    {{-- all header part --}}
-    @include('frontend.pages.header')
-    {{-- end all header part --}}
-
-    {{-- banner part --}}
-    @include('frontend.pages.banner')
-    {{-- end banner part --}}
 
 <div class="characteristics">
     <div class="container">
