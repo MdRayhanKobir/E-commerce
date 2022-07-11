@@ -8,9 +8,11 @@ use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\WishlistController;
 use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Setting\AdminSetiingController;
 use App\Http\Controllers\UserBackend\IndexController;
+use App\Models\Admin\Wishlist;
 use App\Models\Frontend\Newsletter;
 
 Route::get('/', function () {
@@ -18,10 +20,11 @@ Route::get('/', function () {
 });
 
 // User Profile all Route
-
 Route::get('/password/change',[IndexController::class,'UserPassChange'])->name('userpassword.change');
 Route::post('/password/update',[IndexController::class,'UserPassUpdate'])->name('userpassword.update');
 
+// Wishlist all Route
+Route::get('/wishlist/add/{id}',[WishlistController::class,'WishlistAdd'])->name('wishlist.add');
 
 // Logout Route
 Route::get('/logout', [AdminSetiingController::class, 'Logout'])->name('logout');

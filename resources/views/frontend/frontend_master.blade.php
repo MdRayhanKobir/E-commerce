@@ -31,21 +31,25 @@
                                         <li><a href="#">Japanese</a></li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">EUR Euro</a></li>
-                                        <li><a href="#">GBP British Pound</a></li>
-                                        <li><a href="#">JPY Japanese Yen</a></li>
-                                    </ul>
-                                </li>
                             </ul>
                         </div>
                         <div class="top_bar_user">
 
                             @auth()
-                            <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt=""></div>
-                            <div><a href="">User Profile</a></div>
+                            <ul class="standard_dropdown top_bar_dropdown">
+                                <li>
+                                    <a href="{{ route('dashboard') }}">
+                                        <div class="user_icon"><img src="{{ asset('frontend/images/user.svg')}}" alt="">
+                                        </div> Profile<i class="fas fa-chevron-down"></i>
+                                    </a>
+
+                                    <ul>
+                                        <li><a href="#">Wishlist</a></li>
+                                        <li><a href="#">Checkout</a></li>
+                                        <li><a href="#">Other's</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                             @else
                             <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt=""></div>
                             <div><a href="{{ route('register')}}">Register</a></div>
@@ -115,7 +119,7 @@
                         <div class="cart">
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
-                                    <img src="{{ asset('frontend/') }}images/cart.png" alt="">
+                                    <img src="{{ asset('frontend/images/cart.png') }}" alt="">
                                     <div class="cart_count"><span>10</span></div>
                                 </div>
                                 <div class="cart_content">

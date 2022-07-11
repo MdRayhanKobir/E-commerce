@@ -247,8 +247,6 @@ Product Add -Page
 
                             </div> <!-- col-4 -->
 
-
-
                             <div class="col-lg-4">
                                 <label class="ckbox">
                                     <input type="checkbox" name="best_rated" value="1">
@@ -285,6 +283,15 @@ Product Add -Page
                             </div> <!-- col-4 -->
                         </div>
                         {{-- end row --}}
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label class="ckbox">
+                                    <input type="checkbox" name="buyone_getone" value="1">
+                                    <span>Buy One Get One</span>
+                                </label>
+
+                            </div> <!-- col-4 -->
+                        </div>
 
                         <br><br>
 

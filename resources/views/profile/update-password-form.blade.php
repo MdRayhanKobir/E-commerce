@@ -54,14 +54,24 @@
                             <div class="form-group">
                               <label for="">Cureent Password</label>
                               <input type="password" name="oldpassword" id="cureent_password" class="form-control" placeholder="Enter Old Password">
+                              @error('oldpassword')
+                                <div class="alert text-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">New Password</label>
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Enter new Password">
+                                @error('password')
+                                <div class="alert text-danger">{{ $message }}</div>
+                            @enderror
                               </div>
                               <div class="form-group">
                                 <label for="">Confirm  Password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Enter Confirm Password" required="">
+                                @error('password')
+                                <div class="alert text-danger">{{ $message }}</div>
+                             @enderror
+                             
                               </div>
 
 

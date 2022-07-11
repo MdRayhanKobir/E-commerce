@@ -75,6 +75,7 @@ class ProductController extends Controller
         $data->video_link                   =$request->video_link;
         $data->main_slider                  =$request->main_slider;
         $data->hot_deal                     =$request->hot_deal;
+        $data->buyone_getone                =$request->buyone_getone;
         $data->best_rated                   =$request->best_rated;
         $data->trend                        =$request->trend;
         $data->mid_slider                   =$request->mid_slider;
@@ -142,6 +143,7 @@ class ProductController extends Controller
         $data->video_link                   =$request->video_link;
         $data->main_slider                  =$request->main_slider;
         $data->hot_deal                     =$request->hot_deal;
+        $data->buyone_getone                =$request->buyone_getone;
         $data->best_rated                   =$request->best_rated;
         $data->trend                        =$request->trend;
         $data->mid_slider                   =$request->mid_slider;
@@ -183,7 +185,7 @@ class ProductController extends Controller
         $data->save();
 
         $notification = array(
-            'messege' => 'Succesfully Product Insert',
+            'messege' => 'Succesfully Product Update',
             'alert-type' => 'success'
         );
         return redirect()->route('product.view')->with($notification);
