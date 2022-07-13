@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Backend\PostController;
@@ -24,7 +25,11 @@ Route::get('/password/change',[IndexController::class,'UserPassChange'])->name('
 Route::post('/password/update',[IndexController::class,'UserPassUpdate'])->name('userpassword.update');
 
 // Wishlist all Route
-Route::get('/wishlist/add/{id}',[WishlistController::class,'WishlistAdd'])->name('wishlist.add');
+Route::get('/add/wishlist/{id}',[WishlistController::class,'WishlistAdd'])->name('wishlist.add');
+
+// Add to Cart all route
+Route::get('/add/cart/{id}',[CartController::class,'AddCart'])->name('add.cart');
+Route::get('/check/product',[CartController::class,'ProductCheck'])->name('product.check');
 
 // Logout Route
 Route::get('/logout', [AdminSetiingController::class, 'Logout'])->name('logout');

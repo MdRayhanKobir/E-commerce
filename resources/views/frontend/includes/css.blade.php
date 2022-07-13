@@ -9,3 +9,6 @@
 
 {{-- toaster --}}
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+{{-- sweet alert --}}
+<link rel="stylesheet" href="sweetalert2.min.css">

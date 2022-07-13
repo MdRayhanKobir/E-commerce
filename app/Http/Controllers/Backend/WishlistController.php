@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Response;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Admin\Wishlist;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
@@ -19,28 +20,16 @@ class WishlistController extends Controller
         if(Auth::check()){
 
             if($check){
-                $notification = array(
-                    'messege' => 'Already has in your wishlist',
-                    'alert-type' => 'error'
-                );
-                return redirect()->back()->with($notification);
+                return response (['error' => 'Product  already has on your wishlist ']);
 
             }else{
                 $data->save();
-                $notification = array(
-                    'messege' => 'Add to wishlist',
-                    'alert-type' => 'success'
-                );
-                return redirect()->back()->with($notification);
+                return response (['success' => 'Add to wishlist']);
 
             }
 
         }else{
-            $notification = array(
-                'messege' => 'Login Your Account First',
-                'alert-type' => 'warnning'
-            );
-            return redirect()->route('login')->with($notification);
+            return response (['error' => 'At first loing your account']);
         }
     }
 }
