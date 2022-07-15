@@ -36,6 +36,13 @@ Route::get('/cart/product/view/{id}',[CartController::class,'ModalCartView'])->n
 Route::post('/cart/modal/insert',[CartController::class,'ModalCartInsert'])->name('insert.into.cart');
 Route::get('/user/checkout',[CartController::class,'CheckOut'])->name('user.checkout');
 
+// details wishlist
+Route::get('/user/wishlist',[CartController::class,'UserWishlist'])->name('user.wishlist');
+
+// apply cupon route
+Route::post('/user/apply/cupon',[CartController::class,'UserCupon'])->name('apply.cupon');
+
+
 
 Route::get('/check/product',[CartController::class,'ProductCheck'])->name('product.check');
 

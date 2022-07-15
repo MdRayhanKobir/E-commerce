@@ -5,6 +5,12 @@ Checkout -Pages
 @endsection
 
 @section('content')
+@php
+    $setting=DB::table('setiings')->first();
+    $charge=$setting->shipping_charge;
+    $vat=$setting->vat;
+@endphp
+
 @include('frontend.pages.header')
 
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_styles.css') }}">
@@ -79,21 +85,38 @@ Checkout -Pages
 
                     <!-- Order Total -->
                     <div class="order_total_content" style="padding:15px;">
-                        <form action="">
+                        @if (Session::has('cupon'))
+                        @else
+                        <form action="{{ route('apply.cupon') }}" method="POST">
+                            @csrf
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="" id="" required="" placeholder="Enter your cupon" >
+                                <input type="text" class="form-control" name="cupon" id="" required="" placeholder="Enter your cupon" >
                             </div>
                             <button class=" btn btn-danger">Aapply Cupon</button>
                         </div>
                     </form>
+                    @endif
                     </div>
                     <ul class="list-group col-md-4" style="float:right;">
-                        <li class="list-group-item">Sub Total: <span style="float:right;">121</span></li>
-                        <li class="list-group-item">Cupon: <span style="float:right;">121</span></li>
-                        <li class="list-group-item">Shipping Charge: <span style="float:right;">171</span></li>
-                        <li class="list-group-item">Vat: <span style="float:right;">121</span></li>
-                        <li class="list-group-item">Total: <span style="float:right;">121</span></li>
+                        @if (Session::has('cupon'))
+                        <li class="list-group-item">Sub Total: <span style="float:right;">৳{{ Session::get('cupon')['balance'] }}</span></li>
+                        <li class="list-group-item">Cupon: <span class="badge badge-primary">{{ Session::get('cupon')['name'] }}
+                        <a href="" class="btn btn-sm btn-danger">x</a>
+                        </span> <span style="float:right;">{{ Session::get('cupon')['discount'] }}</span></li>
+                        @else
+                        <li class="list-group-item">Sub Total: <span style="float:right;">৳{{Cart::subtotal() }}</span></li>
+
+                        @endif
+
+                        <li class="list-group-item">Shipping Charge: <span style="float:right;">৳{{ $charge }}</span></li>
+                        <li class="list-group-item">Vat: <span style="float:right;">৳{{ $vat }}</span></li>
+
+                        @if (Session::has('cupon'))
+                        <li class="list-group-item">Total: <span style="float:right;">৳{{ Session::get('cupon')['balance'] +$charge +$vat }}</span></li>
+                        @else
+                        <li class="list-group-item">Total: <span style="float:right;">{{ Cart::total()+ $charge +$vat}}</span></li>
+                        @endif
 
                     </ul>
                 </div>
@@ -102,8 +125,8 @@ Checkout -Pages
 
 
                     <div class="cart_buttons">
-                        <button type="button" class="button cart_button_clear">All Cancel</button>
-                        <a href="{{ route('user.checkout') }}" class="button cart_button_checkout">CheckOut</a>
+                        <button type="button" class="btn btn-outline-primary mr-2">All Cancel</button>
+                        <a href="{{ route('user.checkout') }}" class="btn btn-primary">CheckOut</a>
                     </div>
                 </div>
             </div>

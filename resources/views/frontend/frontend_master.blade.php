@@ -44,7 +44,7 @@
                                     </a>
 
                                     <ul>
-                                        <li><a href="#">Wishlist</a></li>
+                                        <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
                                         <li><a href="{{ route('user.checkout') }}">Checkout</a></li>
                                         <li><a href="#">Other's</a></li>
                                     </ul>
@@ -115,7 +115,7 @@
 
                            <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}" alt=""></div>
                            <div class="wishlist_content">
-                            <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                            <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
                             <div class="wishlist_count"><span class="badge badge-info">{{ count( $wishlist) }}</span></div>
                         </div>
                         @else

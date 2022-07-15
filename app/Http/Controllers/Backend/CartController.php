@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
+use App\Models\Admin\Wishlist;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Facade\FlareClient\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
@@ -156,6 +158,45 @@ return response(array(
 
 
         }
+    }
+
+    public function UserWishlist(){
+        $userid=Auth::id();
+        $product=DB::table('wishlists')
+                        ->join('products','wishlists.product_id','products.id')
+                        ->select('products.*','wishlists.user_id')
+                        ->where('wishlists.user_id',$userid)
+                        ->get();
+        return view('frontend.pages.wishlist',compact('product'));
+
+    }
+
+    public function UserCupon(Request $request){
+
+        $cupon=$request->cupon;
+        $check=DB::table('cupons')->where('cupon',$cupon)->first();
+        if($check){
+            Session::put('cupon',[
+                'name'=>$check->cupon,
+                'discount'=>$check->discount,
+                'balance'=>Cart::subtotal()-$check->discount,
+            ]);
+            $notification = array(
+                'messege' => 'Successfully Cupon Applied',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+
+
+        }else{
+            $notification = array(
+                'messege' => ' Applied Cupon Wrong',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+
+
     }
 
 
