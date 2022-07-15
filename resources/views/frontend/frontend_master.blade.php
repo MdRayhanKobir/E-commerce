@@ -45,7 +45,7 @@
 
                                     <ul>
                                         <li><a href="#">Wishlist</a></li>
-                                        <li><a href="#">Checkout</a></li>
+                                        <li><a href="{{ route('user.checkout') }}">Checkout</a></li>
                                         <li><a href="#">Other's</a></li>
                                     </ul>
                                 </li>
@@ -108,11 +108,19 @@
                 <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                     <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                         <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                            <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}" alt=""></div>
-                            <div class="wishlist_content">
-                                <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                <div class="wishlist_count">115</div>
-                            </div>
+                           @auth
+                           @php
+                               $wishlist=DB::table('wishlists')->where('user_id',Auth::id())->get();
+                           @endphp
+
+                           <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}" alt=""></div>
+                           <div class="wishlist_content">
+                            <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                            <div class="wishlist_count"><span class="badge badge-info">{{ count( $wishlist) }}</span></div>
+                        </div>
+                        @else
+                           @endauth
+
                         </div>
 
                         <!-- Cart -->
@@ -120,11 +128,11 @@
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
                                     <img src="{{ asset('frontend/images/cart.png') }}" alt="">
-                                    <div class="cart_count"><span>10</span></div>
+                                    <div class="cart_count"><span>{{Cart::count()}}</span></div>
                                 </div>
                                 <div class="cart_content">
-                                    <div class="cart_text"><a href="#">Cart</a></div>
-                                    <div class="cart_price">$85</div>
+                                    <div class="cart_text"><a href="{{ route('cart.show') }}">Cart</a></div>
+                                    <div class="cart_price">৳{{ Cart::subtotal() }}</div>
                                 </div>
                             </div>
                         </div>

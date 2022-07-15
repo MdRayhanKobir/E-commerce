@@ -8,13 +8,13 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ProductDetailsController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\WishlistController;
 use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Setting\AdminSetiingController;
 use App\Http\Controllers\UserBackend\IndexController;
-use App\Models\Admin\Wishlist;
-use App\Models\Frontend\Newsletter;
+
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -29,7 +29,21 @@ Route::get('/add/wishlist/{id}',[WishlistController::class,'WishlistAdd'])->name
 
 // Add to Cart all route
 Route::get('/add/cart/{id}',[CartController::class,'AddCart'])->name('add.cart');
+Route::get('/cart/show',[CartController::class,'ShowCart'])->name('cart.show');
+Route::get('/cart/remove/{id}',[CartController::class,'CartRemove'])->name('cart.remove');
+Route::post('/cart/update/item',[CartController::class,'CartItemUpdate'])->name('update.cartitem');
+Route::get('/cart/product/view/{id}',[CartController::class,'ModalCartView'])->name('modalcart.productview');
+Route::post('/cart/modal/insert',[CartController::class,'ModalCartInsert'])->name('insert.into.cart');
+Route::get('/user/checkout',[CartController::class,'CheckOut'])->name('user.checkout');
+
+
 Route::get('/check/product',[CartController::class,'ProductCheck'])->name('product.check');
+
+// product details route
+Route::get('/product/details/{id}/{product_nmae}',[ ProductDetailsController::class,'ProductDetails'])->name('product.details');
+Route::post('/cart/product/add/{id}',[ ProductDetailsController::class,'ProducAdd'])->name('product.addcart');
+
+
 
 // Logout Route
 Route::get('/logout', [AdminSetiingController::class, 'Logout'])->name('logout');
