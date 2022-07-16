@@ -1,35 +1,40 @@
+
 @extends('frontend.frontend_master')
-
-@section('title')
-Checkout -Pages
-@endsection
-
 @section('content')
+@include('frontend.pages.header')
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/contact_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('forntend/styles/contact_responsive.css') }}">
+
+
 @php
     $setting=DB::table('setiings')->first();
     $charge=$setting->shipping_charge;
     $vat=$setting->vat;
 @endphp
 
-@include('frontend.pages.header')
-
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_responsive.css') }}">
-{{-- cart --}}
-<div class="cart_section">
+  <div class="contact_form">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 ">
-                <div class="cart_container">
-                    <div class="cart_title">Checkout</div>
+            <div class="col-lg-7  rounded p-3 "style="border:2px solid #0984e3">
+                <div class="contact_form_container">
+                    <div class="contact_form_title text-center">Cart Products</div>
+
                     <div class="cart_items">
                         <ul class="cart_list">
                             @foreach ($cart as $cart )
                             <li class="cart_item clearfix">
-                                <div class="cart_item_image"><img src="{{ asset($cart->options->image) }}" alt="" style="width:70px; height:70px"></div>
+
                                 <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+
                                     <div class="cart_item_name cart_info_col">
-                                        <div class="cart_item_title">Name</div>
+                                        <div class="cart_item_title">Image</div>
+                                        <div class="cart_item_text">
+                                            <img src="{{ asset($cart->options->image) }}" alt="" style="width:70px; height:70px">
+                                        </div>
+                                    </div>
+
+                                    <div class="cart_item_name cart_info_col">
+                                        <div class="cart_item_title ">Name</div>
                                         <div class="cart_item_text">{{ $cart->name }}</div>
                                     </div>
 
@@ -52,15 +57,9 @@ Checkout -Pages
 
                                     <div class="cart_item_quantity cart_info_col">
                                         <div class="cart_item_title">Quantity</div>
-                                        <br>
-                                        <form method="post" action="{{ route('update.cartitem') }}">
-                                        @csrf
-                                        <input type="hidden" name="productid" value="{{ $cart->rowId }}">
-                                        <input type="number" name="qty" value="{{ $cart->qty }}" style="width: 50px;">
-                                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check-square"></i> </button>
-
-                                    </form>
+                                        <div class="cart_item_text">{{ $cart->qty }}</div>
                                     </div>
+
                                     <div class="cart_item_price cart_info_col">
                                         <div class="cart_item_title">Price</div>
                                         <div class="cart_item_text">৳{{ $cart->price }}</div>
@@ -77,32 +76,15 @@ Checkout -Pages
                                     </div>
                                 </div>
                             </li>
-
                             @endforeach
-
                         </ul>
                     </div>
 
-                    <!-- Order Total -->
-                    <div class="order_total_content" style="padding:15px;">
-                        @if (Session::has('cupon'))
-                        @else
-                        <form action="{{ route('apply.cupon') }}" method="POST">
-                            @csrf
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="cupon" id="" required="" placeholder="Enter your cupon" >
-                            </div>
-                            <button class=" btn btn-danger">Aapply Cupon</button>
-                        </div>
-                    </form>
-                    @endif
-                    </div>
                     <ul class="list-group col-md-4" style="float:right;">
                         @if (Session::has('cupon'))
                         <li class="list-group-item">Sub Total: <span style="float:right;">৳{{ Session::get('cupon')['balance'] }}</span></li>
                         <li class="list-group-item">Cupon: <span class="badge badge-primary">{{ Session::get('cupon')['name'] }}
-                        <a href="{{ route('cupon.remove') }}" class="btn btn-sm btn-danger">x</a>
+                        {{-- <a href="{{ route('cupon.remove') }}" class="btn btn-sm btn-danger">x</a> --}}
                         </span> <span style="float:right;">{{ Session::get('cupon')['discount'] }}</span></li>
                         @else
                         <li class="list-group-item">Sub Total: <span style="float:right;">৳{{Cart::subtotal() }}</span></li>
@@ -119,20 +101,83 @@ Checkout -Pages
                         @endif
 
                     </ul>
+
+
                 </div>
             </div>
-        </div>
 
 
-                    <div class="cart_buttons">
-                        <button type="button" class="btn btn-outline-primary mr-2">All Cancel</button>
-                        <a href="{{ route('payment.step') }}" class="btn btn-primary">Final Step</a>
+            <div class="col-lg-5  rounded p-3"style="border:2px solid #0984e3">
+                <div class="contact_form_container">
+                    <div class="contact_form_title text-center">Shipping Address</div>
+
+                    <form method="POST" action="{{ route('payment.process') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="">Full Name</label>
+                            <input type="text"class="form-control" id="name" name="name" placeholder="Enter your Full Name">
+                            @error('name')
+                            <div class="alert text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="">Phone</label>
+                        <input type="number"class="form-control" id="phone" name="phone" placeholder="Enter your Phone Number">
+                        @error('phone')
+                        <div class="alert text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email"class="form-control" id="email" name="email" placeholder="Enter your Email">
+                    @error('email')
+                    <div class="alert text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="">Address</label>
+                <input type="email"class="form-control" id="address" name="address" placeholder="Enter your Email">
+                @error('address')
+                <div class="alert text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="">City</label>
+            <input type="email"class="form-control" id="city" name="city" placeholder="Enter your City">
+            @error('city')
+            <div class="alert text-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+
+    <div class="contact_form_title text-center">Payment By </div>
+    <div class="form-group">
+        <ul class="logos_list">
+            <li><input type="radio" name="payment" id="" value="stripe">
+                <img src="{{ asset('frontend/images/mastercard.png') }}" alt="" style="width:100px;height:60px; ">
+            </li>
+            <li><input type="radio" name="payment" id="" value="paypal">
+                <img src="{{ asset('frontend/images/paypal.png') }}" alt="" style="width:100px;height:60px; ">
+            </li>
+            <li><input type="radio" name="payment" id="" value="ideal">
+                <img src="{{ asset('frontend/images/mollie.png') }}" alt="" style="width:100px;height:60px; ">
+            </li>
+
+        </ul>
+    </div>
+
+                        <div class="contact_form_button text-center">
+                            <button type="submit" class="button contact_submit_button">Pay Now</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
+    <div class="panel"></div>
 </div>
 
-<script src="{{ asset('frontend/js/cart_custom.js') }}"></script>
+
 @endsection

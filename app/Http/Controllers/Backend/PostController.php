@@ -93,8 +93,8 @@ class PostController extends Controller
     public function BlogStore(Request $request){
 
         $validated = $request->validate([
-            'post_title_eng' => 'required|unique:post_categories|max:255',
-            'post_title_bang' => 'required|unique:post_categories|max:255',
+            'post_title_eng' => 'required|unique:posts|max:255',
+            'post_title_bang' => 'required|unique:posts|max:255',
             'post_category_id' => 'required',
             'post_details_eng' => 'required',
             'post_details_bang' => 'required',

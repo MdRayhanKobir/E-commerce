@@ -196,13 +196,31 @@ return response(array(
             return redirect()->back()->with($notification);
         }
 
+    }
 
+    public function CuponRemove(){
+        Session::forget('cupon');
+
+        $notification = array(
+            'messege' => ' Successfully Cupon Remove',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+
+    //=============== payment method==========
+    public function PaymentPage(){
+        $cart=Cart::Content();
+        return view('frontend.pages.payment',compact('cart'));
     }
 
 
 
-    public function ProductCheck(){
-        $data=Cart::content();
-        return response($data);
-    }
+
+
+    // public function ProductCheck(){
+    //     $data=Cart::content();
+    //     return response($data);
+    // }
 }
