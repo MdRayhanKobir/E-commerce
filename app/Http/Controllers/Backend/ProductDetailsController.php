@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Brand;
+use App\Models\Admin\Category;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ProductDetailsController extends Controller
@@ -63,5 +65,24 @@ class ProductDetailsController extends Controller
         return redirect()->back()->with($notification);
         }
 
+    }
+
+
+    //============ subcategory ==========
+    public function SubcategoryProduct($id){
+        $product=DB::table('products')->where('subcategory_id',$id)->paginate(10);
+        $category=Category::all();
+        $brand=DB::table('products')->where('subcategory_id',$id)->select('brand_id')->groupBy('brand_id')->get();
+
+        return view('frontend.pages.all_product',compact('product','category','brand'));
+    }
+
+    // ============category =========
+
+    public function CategoryProduct($id){
+        $product=DB::table('products')->where('category_id',$id)->paginate(5);
+        $category=Category::all();
+        $brand=Brand::all();
+        return view('frontend.pages.all_category',compact('product','category','brand'));
     }
 }

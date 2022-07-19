@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer" style="background-color: rgba(60, 99, 130,0.3)">
     <div class="container">
         <div class="row">
 
@@ -75,7 +75,7 @@
 
 <!-- Copyright -->
 
-<div class="copyright">
+<div class="copyright" style="background-color: rgba(130, 204, 221,.2)">
     <div class="container">
         <div class="row">
             <div class="col">

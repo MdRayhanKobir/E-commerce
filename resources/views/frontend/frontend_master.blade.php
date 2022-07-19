@@ -14,12 +14,12 @@
 <!-- Header -->
 <header class="header">
     <!-- Top Bar -->
-    <div class="top_bar">
+    <div class="top_bar" style="background-color: rgba(130, 204, 221,.2)">
         <div class="container">
             <div class="row">
                 <div class="col d-flex flex-row">
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/phone.png') }}" alt=""></div>+38 068 005 3570</div>
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/phone-call.png') }}" alt=""></div><a href="tel:01727038318">01727038318</a></div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/email.png') }}" alt=""></div><a href="mailto:fastsales@gmail.com">easyfind@gmail.com</a></div>
                     <div class="top_bar_content ml-auto">
                         <div class="top_bar_menu">
                             <ul class="standard_dropdown top_bar_dropdown">
@@ -28,9 +28,9 @@
                                 @endphp
                                 <li>
                                     @if (Session()->get('lang')=='bangla')
-                                    <a href="{{ route('lang.english') }}">English<i class="fas fa-chevron-down"></i></a>
+                                    <a href="{{ route('lang.english') }}" title="english"><img src="{{ asset('frontend/images/united-kingdom.png') }}" alt=""></a>
                                     @else
-                                    <a href="{{ route('lang.bangla') }}">Bangla<i class="fas fa-chevron-down"></i></a>
+                                    <a href="{{ route('lang.bangla') }}" title="bangla"><img src="{{ asset('frontend/images/bangladesh.png') }}" alt=""></a>
                                     @endif
 
 
@@ -43,7 +43,7 @@
                             <ul class="standard_dropdown top_bar_dropdown">
                                 <li>
                                     <a href="{{ route('dashboard') }}">
-                                        <div class="user_icon"><img src="{{ asset('frontend/images/user.svg')}}" alt="">
+                                        <div class="user_icon"><img src="{{ asset('frontend/images/user.png')}}" alt="" style="width:24px ">
                                         </div> Profile<i class="fas fa-chevron-down"></i>
                                     </a>
 
@@ -55,7 +55,7 @@
                                 </li>
                             </ul>
                             @else
-                            <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt=""></div>
+                            <div class="user_icon"><img src="{{ asset('frontend/images/user.png') }}" alt=""></div>
                             <div><a href="{{ route('register')}}">Register</a></div>
                             <div><a href="{{ route('login') }}">Sign in</a></div>
                             @endauth
@@ -68,7 +68,7 @@
 
     <!-- Header Main -->
 
-    <div class="header_main">
+    <div class="header_main" style="background-color: rgba(60, 99, 130,0.3)">
         <div class="container">
             <div class="row">
 
@@ -96,10 +96,10 @@
                                                @endphp
                                                 @foreach ($cat as $cat )
                                                 <li><a class="clc" href="#">{{ $cat->category_name }}</a></li>
-
                                                 @endforeach
                                             </ul>
                                         </div>
+
                                     </div>
                                     <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('frontend/images/search.png') }}" alt=""></button>
                                 </form>
@@ -117,10 +117,10 @@
                                $wishlist=DB::table('wishlists')->where('user_id',Auth::id())->get();
                            @endphp
 
-                           <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}" alt=""></div>
+                           <div class="wishlist_icon"><img src="{{ asset('frontend/images/cart.png') }}" alt="" style="width:40px"></div>
                            <div class="wishlist_content">
                             <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
-                            <div class="wishlist_count"><span class="badge badge-info">{{ count( $wishlist) }}</span></div>
+                            <div class="wishlist_count"><span class="badge badge-primary">{{ count( $wishlist) }}</span></div>
                         </div>
                         @else
                            @endauth
@@ -131,12 +131,12 @@
                         <div class="cart">
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
-                                    <img src="{{ asset('frontend/images/cart.png') }}" alt="">
+                                    <img src="{{ asset('frontend/images/shopping-bag.png') }}" alt="" style="width:40px ">
                                     <div class="cart_count"><span>{{Cart::count()}}</span></div>
                                 </div>
                                 <div class="cart_content">
                                     <div class="cart_text"><a href="{{ route('cart.show') }}">Cart</a></div>
-                                    <div class="cart_price">৳{{ Cart::subtotal() }}</div>
+                                    <div class="cart_price"><span class="badge badge-primary">৳{{ Cart::subtotal() }}</span></div>
                                 </div>
                             </div>
                         </div>

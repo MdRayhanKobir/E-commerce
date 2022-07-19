@@ -1,37 +1,42 @@
 
 @extends('frontend.frontend_master')
 @section('content')
-<div class="contact_form">
+
+@php
+    $order=DB::table('orders')->where('user_id',Auth::id())->orderBy('id','desc')->limit(10)->get();
+@endphp
+
+<div class="contact_form pt-2 pb-2">
     <div class="container">
         <div class="row">
-            <div class="card col-md-8">
-                <table class="table table-bordered ">
+            <div class="card col-md-8 table-responsive">
+                <table class="table table-bordered">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th >Payment Type</th>
+                        <th >Payment Id</th>
+                        <th >Amount</th>
+                        <th >Date</th>
+                        <th >Status Code</th>
+                        <th >Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th>1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                     @foreach ($order as $order )
+                     <tr>
+                        <td>{{ $order->payment_type }}</td>
+                        <td>{{ $order->payment_id }}</td>
+                        <td>{{ $order->total }} Taka</td>
+                        <td>{{ $order->date }}</td>
+                        <td>{{ $order->status_code }}</td>
+                        <td>
+                            <a href="" class="btn btn-primary">View</a>
+                        </td>
+
                       </tr>
-                      <tr>
-                        <th>2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th >3</th>
-                        <td >Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+
+                     @endforeach
+
                     </tbody>
                   </table>
             </div>

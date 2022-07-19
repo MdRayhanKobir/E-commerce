@@ -21,14 +21,14 @@
                             <ul class="cat_menu">
                             @foreach ($category as $categories)
                                 <li class="hassubs">
-                                    <a href="#">{{ $categories->category_name }}<i class="fas fa-chevron-right"></i></a>
+                                    <a href="{{ route('category.product',['id'=>$categories->id]) }}">{{ $categories->category_name }}<i class="fas fa-chevron-right"></i></a>
 
                                     <ul>
                                         @php
                                             $subcategory=DB::table('sub_categories')->where('category_id',$categories->id)->get();
                                          @endphp
                                         @foreach ($subcategory as $subcategories )
-                                        <li><a href="#">{{ $subcategories->subcategory_name }}<i class="fas fa-chevron-right"></i></a></li>
+                                        <li><a href="{{ route('subcategory.product',['id'=>$subcategories->id]) }}">{{ $subcategories->subcategory_name }}<i class="fas fa-chevron-right"></i></a></li>
                                         @endforeach
                                     </ul>
                                 </li>

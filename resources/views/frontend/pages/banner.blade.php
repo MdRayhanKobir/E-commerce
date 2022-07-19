@@ -21,7 +21,7 @@
                             <span>৳{{ $slider->selling_price }}</span>৳{{ $slider->discount_price }}</div>
                             @endif
 						<div class="banner_product_name"><span style="color:rgb(30, 19, 185)">by</span> {{ $slider->brand_name }}</div>
-						<div class="button banner_button"><a href="#">Shop Now</a></div>
+						<div class="button banner_button"><a href="{{ url('product/details/' . $slider->id . '/' . $slider->product_name) }}">Shop Now</a></div>
 					</div>
 				</div>
 			</div>

@@ -18,6 +18,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 
+
  <script>
         @if(Session::has('messege'))
           var type="{{Session::get('alert-type','info')}}"

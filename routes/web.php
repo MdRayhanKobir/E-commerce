@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CuponController;
+use App\Http\Controllers\Backend\Ordercontroller;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProductController;
@@ -43,6 +44,8 @@ Route::get('/payment/step',[CartController::class,'PaymentPage'])->name('payment
 
 // Payment route
 Route::post('/user/payment/process',[PaymentController::class,'Payment'])->name('payment.process');
+// payment stripe charge
+Route::post('/user/stripe/charge',[PaymentController::class,'StripeCharge'])->name('stripe.charge');
 
 
 // details wishlist
@@ -58,6 +61,17 @@ Route::get('/cupon/remove',[CartController::class,'CuponRemove'])->name('cupon.r
 // product details route
 Route::get('/product/details/{id}/{product_nmae}',[ ProductDetailsController::class,'ProductDetails'])->name('product.details');
 Route::post('/cart/product/add/{id}',[ ProductDetailsController::class,'ProducAdd'])->name('product.addcart');
+
+// all subcategory product route
+Route::get('/product/subcategory/{id}',[ ProductDetailsController::class,'SubcategoryProduct'])->name('subcategory.product');
+
+// all category product route
+Route::get('/product/category/{id}',[ ProductDetailsController::class,'CategoryProduct'])->name('category.product');
+
+
+
+
+
 
 // Blog all Route
 Route::get('/blog/post',[BlogController::class,'Blog'])->name('blog.post');
@@ -150,6 +164,27 @@ Route::prefix('admin')->group(function () {
     Route::get('/blog/edit/{id}',[PostController::class,'BlogEdit'])->name('blog.edit');
     Route::post('/blog/update/{id}',[PostController::class,'BlogUpdate'])->name('blog.update');
     Route::get('/blog/delete/{id}',[PostController::class,'BlogDelete'])->name('blog.delete');
+
+
+    // Admin Order all Route
+    Route::get('/pending/orders',[Ordercontroller::class,'NewOrder'])->name('admin.order');
+    Route::get('/order/view/{id}',[Ordercontroller::class,'ViewOrder'])->name('order.view');
+
+    Route::get('/payment/accept/{id}',[Ordercontroller::class,'PaymentAccept'])->name('payment.accept');
+    Route::get('/payment/cancel/{id}',[Ordercontroller::class,'PaymentCancel'])->name('payment.cancel');
+
+    Route::get('/accept/payment',[Ordercontroller::class,'AcceptPayment'])->name('accept.payment');
+    Route::get('/cancel/payment',[Ordercontroller::class,'CancelPayment'])->name('cancel.payment');
+    Route::get('/process/payment',[Ordercontroller::class,'ProcessPayment'])->name('process.payment');
+    Route::get('/delivared/payment',[Ordercontroller::class,'DelivaredPayment'])->name('delivared.payment');
+
+    Route::get('/process/delivary/{id}',[Ordercontroller::class,'ProcessDelivary'])->name('process.delivary');
+    Route::get('/delivary/done/{id}',[Ordercontroller::class,'DelivaryDone'])->name('delivary.done');
+
+
+
+
+
 
 
 

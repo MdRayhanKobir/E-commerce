@@ -115,21 +115,21 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Full Name</label>
-                            <input type="text"class="form-control" id="name" name="name" placeholder="Enter your Full Name">
+                            <input type="text"class="form-control" id="name" name="name" placeholder="Enter your Full Name" required="">
                             @error('name')
                             <div class="alert text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Phone</label>
-                        <input type="number"class="form-control" id="phone" name="phone" placeholder="Enter your Phone Number">
+                        <input type="number"class="form-control" id="phone" name="phone" placeholder="Enter your Phone Number" required="">
                         @error('phone')
                         <div class="alert text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email"class="form-control" id="email" name="email" placeholder="Enter your Email">
+                    <input type="email"class="form-control" id="email" name="email" placeholder="Enter your Email" required="">
                     @error('email')
                     <div class="alert text-danger">{{ $message }}</div>
                 @enderror
@@ -137,14 +137,14 @@
 
             <div class="form-group">
                 <label for="">Address</label>
-                <input type="email"class="form-control" id="address" name="address" placeholder="Enter your Email">
+                <input type="text"class="form-control" id="address" name="address" placeholder="Enter your Address" required="">
                 @error('address')
                 <div class="alert text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
             <label for="">City</label>
-            <input type="email"class="form-control" id="city" name="city" placeholder="Enter your City">
+            <input type="text"class="form-control" id="city" name="city" placeholder="Enter your City" required="">
             @error('city')
             <div class="alert text-danger">{{ $message }}</div>
         @enderror

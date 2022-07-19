@@ -7,7 +7,7 @@
   <div class="contact_form">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 offset-lg-1  rounded p-3 "style="border:2px solid #0984e3">
+            <div class="col-lg-5 offset-lg-1  rounded p-3 "style="border:2px solid #0984e3; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="contact_form_container">
                     <div class="contact_form_title text-center">Sign In</div>
 
@@ -36,7 +36,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-5 offset-lg-1 rounded p-3"style="border:2px solid #0984e3">
+            <div class="col-lg-5 offset-lg-1 rounded p-3"style="border:2px solid #0984e3;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="contact_form_container">
                     <div class="contact_form_title text-center">SignUp</div>
 

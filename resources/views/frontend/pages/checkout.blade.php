@@ -19,7 +19,7 @@ Checkout -Pages
 <div class="cart_section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 ">
+            <div class="col-lg-12">
                 <div class="cart_container">
                     <div class="cart_title">Checkout</div>
                     <div class="cart_items">
@@ -98,7 +98,7 @@ Checkout -Pages
                     </form>
                     @endif
                     </div>
-                    <ul class="list-group col-md-4" style="float:right;">
+                    <ul class="list-group col-md-4" style="float:right;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                         @if (Session::has('cupon'))
                         <li class="list-group-item">Sub Total: <span style="float:right;">৳{{ Session::get('cupon')['balance'] }}</span></li>
                         <li class="list-group-item">Cupon: <span class="badge badge-primary">{{ Session::get('cupon')['name'] }}
