@@ -21,6 +21,21 @@
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/phone-call.png') }}" alt=""></div><a href="tel:01727038318">01727038318</a></div>
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/email.png') }}" alt=""></div><a href="mailto:fastsales@gmail.com">easyfind@gmail.com</a></div>
                     <div class="top_bar_content ml-auto">
+
+                    <div class="top_bar_menu">
+                            <ul class="standard_dropdown top_bar_dropdown">
+                               <li >
+                                    <form method="post" action="{{ route('order.tracking') }}">
+                                        @csrf
+                                        <input type="number" name="code" required="" style="width:150px; height:30px; border:none" placeholder="  Order Tracking..">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
+
+                                    </form>
+                                </form>
+                               </li>
+                            </ul>
+                        </div>
+
                         <div class="top_bar_menu">
                             <ul class="standard_dropdown top_bar_dropdown">
                                 @php

@@ -53,6 +53,7 @@
         </div><!-- menu-item -->
         <ul class="sl-menu-sub nav flex-column">
             <li class="nav-item"><a href="{{ route('newsletter.view') }}" class="nav-link">Newsletter</a></li>
+            <li class="nav-item"><a href="{{ route('seo.view') }}" class="nav-link">SEO Setting</a></li>
           </ul>
       </a><!-- sl-menu-link -->
 

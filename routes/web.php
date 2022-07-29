@@ -1,23 +1,25 @@
 <?php
 
+use App\Models\Admin\Cupon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\SEOController;
 use App\Http\Controllers\Backend\CartController;
-use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Backend\Ordercontroller;
-use App\Http\Controllers\Backend\PaymentController;
-use App\Http\Controllers\Backend\PostController;
-use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\ProductDetailsController;
-use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\Backend\WishlistController;
 use App\Http\Controllers\Frontend\BlogController;
-use App\Http\Controllers\Frontend\NewsletterController;
-use App\Http\Controllers\Setting\AdminSetiingController;
+use App\Http\Controllers\Backend\PaymentController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\WishlistController;
 use App\Http\Controllers\UserBackend\IndexController;
-use App\Models\Admin\Cupon;
+use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Backend\OderTrackingController;
+use App\Http\Controllers\Setting\AdminSetiingController;
+use App\Http\Controllers\Backend\ProductDetailsController;
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -68,7 +70,8 @@ Route::get('/product/subcategory/{id}',[ ProductDetailsController::class,'Subcat
 // all category product route
 Route::get('/product/category/{id}',[ ProductDetailsController::class,'CategoryProduct'])->name('category.product');
 
-
+// Order Tracking Route
+Route::post('/order/tracking',[OderTrackingController::class,'OrderTracking'])->name('order.tracking');
 
 
 
@@ -181,14 +184,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/process/delivary/{id}',[Ordercontroller::class,'ProcessDelivary'])->name('process.delivary');
     Route::get('/delivary/done/{id}',[Ordercontroller::class,'DelivaryDone'])->name('delivary.done');
 
-
-
-
-
-
+    //   Admin SEO all route
+    Route::get('/seo-view',[SEOController::class,'SEOView'])->name('seo.view');
+    Route::post('/seo-update/{id}',[SEOController::class,'SEOUpdate'])->name('seo.update');
 
 
 });
+
+
 
 
 
