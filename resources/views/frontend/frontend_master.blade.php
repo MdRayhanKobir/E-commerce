@@ -24,15 +24,18 @@
 
                     <div class="top_bar_menu">
                             <ul class="standard_dropdown top_bar_dropdown">
+                               @guest()
+                               @else
                                <li >
-                                    <form method="post" action="{{ route('order.tracking') }}">
-                                        @csrf
-                                        <input type="number" name="code" required="" style="width:150px; height:30px; border:none" placeholder="  Order Tracking..">
-                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
+                                <form method="post" action="{{ route('order.tracking') }}">
+                                    @csrf
+                                    <input type="number" name="code" required="" style="width:150px; height:30px; border:none" placeholder="  Order Tracking..">
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
 
-                                    </form>
                                 </form>
-                               </li>
+                            </form>
+                           </li>
+                               @endguest
                             </ul>
                         </div>
 

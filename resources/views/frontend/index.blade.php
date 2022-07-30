@@ -362,7 +362,7 @@
                                                 @endif
                                             </div>
 
-                                            <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                            <div class="button banner_2_button"><a href="{{ url('product/details/' . $midslider->id . '/' . $midslider->product_name) }}">Explore</a></div>
                                         </div>
 
                                     </div>
@@ -423,8 +423,10 @@
                                                     class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                                     <div
                                                         class="product_image d-flex flex-column align-items-center justify-content-center">
-                                                        <img src="{{ asset($products->image_one) }}" alt=""
+                                                        <a href="{{ url('product/details/' . $products->id . '/' . $products->product_name) }}">
+                                                            <img src="{{ asset($products->image_one) }}" alt=""
                                                             style="height:120px; width:140px;">
+                                                        </a>
                                                     </div>
                                                     <div class="product_content ">
                                                         @if ($products->discount_price == null)
@@ -531,8 +533,10 @@
                                                 class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                                 <div
                                                     class="product_image d-flex flex-column align-items-center justify-content-center">
-                                                    <img src="{{ asset($products->image_one) }}" alt=""
+                                                    <a href="{{ url('product/details/' . $products->id . '/' . $products->product_name) }}">
+                                                        <img src="{{ asset($products->image_one) }}" alt=""
                                                         style="height:120px; width:140px;">
+                                                    </a>
                                                 </div>
                                                 <div class="product_content ">
                                                     @if ($products->discount_price == null)
@@ -639,8 +643,10 @@
                                                 class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                                 <div
                                                     class="product_image d-flex flex-column align-items-center justify-content-center">
-                                                    <img src="{{ asset($products->image_one) }}" alt=""
+                                                    <a href="{{ url('product/details/' . $products->id . '/' . $products->product_name) }}">
+                                                        <img src="{{ asset($products->image_one) }}" alt=""
                                                         style="height:120px; width:140px;">
+                                                    </a>
                                                 </div>
                                                 <div class="product_content ">
                                                     @if ($products->discount_price == null)
@@ -747,8 +753,10 @@
                                                  class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                                  <div
                                                      class="product_image d-flex flex-column align-items-center justify-content-center">
-                                                     <img src="{{ asset($products->image_one) }}" alt=""
+                                                     <a href="{{ url('product/details/' . $products->id . '/' . $products->product_name) }}">
+                                                        <img src="{{ asset($products->image_one) }}" alt=""
                                                          style="height:120px; width:140px;">
+                                                     </a>
                                                  </div>
                                                  <div class="product_content ">
                                                      @if ($products->discount_price == null)
@@ -856,8 +864,10 @@
                                                    class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                                    <div
                                                        class="product_image d-flex flex-column align-items-center justify-content-center">
-                                                       <img src="{{ asset($products->image_one) }}" alt=""
+                                                       <a href="{{ url('product/details/' . $products->id . '/' . $products->product_name) }}">
+                                                        <img src="{{ asset($products->image_one) }}" alt=""
                                                            style="height:120px; width:140px;">
+                                                       </a>
                                                    </div>
                                                    <div class="product_content ">
                                                        @if ($products->discount_price == null)
@@ -1864,13 +1874,16 @@
                                     <div class="trends_item is_new">
                                         <div
                                             class="trends_image d-flex flex-column align-items-center justify-content-center">
-                                            <img src="{{ asset($buyone_getone->image_one) }}" alt=""></div>
+                                            <a href="{{ url('product/details/' . $buyone_getone->id . '/' . $buyone_getone->product_name) }}">
+                                                <img src="{{ asset($buyone_getone->image_one) }}" alt="">
+                                            </a>
+                                        </div>
                                         <div class="trends_content">
                                             <div class="trends_category"><a
                                                     href="#">{{ $buyone_getone->brand_name }}</a></div>
                                             <div class="trends_info clearfix">
                                                 <div class="trends_name"><a
-                                                        href="product.html">{{ $buyone_getone->product_name }}</a>
+                                                        href="{{ url('product/details/' . $buyone_getone->id . '/' . $buyone_getone->product_name) }}">{{ $buyone_getone->product_name }}</a>
                                                 </div>
                                                 <div>
                                                     @if ($buyone_getone->discount_price == null)
@@ -1881,7 +1894,8 @@
                                                             ৳{{ $buyone_getone->discount_price }}<span><s>৳{{ $buyone_getone->selling_price }}</s></span>
                                                         </div>
                                                     @endif
-                                                    <a href="" class="btn btn-danger btn-sm">Add to Cart</a>
+                                                    <a href="" id="{{ $buyone_getone->id }}" class="btn btn-danger btn-sm addcart"data-toggle="modal"
+                                                    data-target="#cartmodal" onclick="productview(this.id)">Add to Cart</a>
                                                 </div>
                                             </div>
                                         </div>

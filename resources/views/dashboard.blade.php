@@ -6,7 +6,7 @@
     $order=DB::table('orders')->where('user_id',Auth::id())->orderBy('id','desc')->limit(10)->get();
 @endphp
 
-<div class="contact_form pt-2 pb-2">
+<div class="contact_form pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="card col-md-8 table-responsive">

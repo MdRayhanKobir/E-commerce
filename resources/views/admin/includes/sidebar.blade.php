@@ -98,6 +98,21 @@
           </ul>
       </a><!-- sl-menu-link -->
 
+      <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+          <span class="menu-item-label">Report</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('today.order') }}" class="nav-link">Today Orders</a></li>
+            <li class="nav-item"><a href="{{ route('today.delivary') }}" class="nav-link">Today Delivary</a></li>
+            <li class="nav-item"><a href="{{ route('this.month') }}" class="nav-link">This Month</a></li>
+            <li class="nav-item"><a href="{{ route('search.report') }}" class="nav-link">Search Report</a></li>
+
+          </ul>
+      </a><!-- sl-menu-link -->
+
 
 
 

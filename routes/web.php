@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Backend\OderTrackingController;
 use App\Http\Controllers\Setting\AdminSetiingController;
 use App\Http\Controllers\Backend\ProductDetailsController;
+use App\Http\Controllers\Backend\ReportController;
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -187,6 +188,13 @@ Route::prefix('admin')->group(function () {
     //   Admin SEO all route
     Route::get('/seo-view',[SEOController::class,'SEOView'])->name('seo.view');
     Route::post('/seo-update/{id}',[SEOController::class,'SEOUpdate'])->name('seo.update');
+
+
+    // Report all route
+    Route::get('/today/order',[ReportController::class,'TodayOrder'])->name('today.order');
+    Route::get('/today/delivary',[ReportController::class,'TodayDelivary'])->name('today.delivary');
+    Route::get('/this/month',[ReportController::class,'ThisMonth'])->name('this.month');
+    Route::get('/search/report',[ReportController::class,'SearchReport'])->name('search.report');
 
 
 });
