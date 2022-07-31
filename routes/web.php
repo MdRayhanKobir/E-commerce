@@ -21,6 +21,8 @@ use App\Http\Controllers\Backend\OderTrackingController;
 use App\Http\Controllers\Setting\AdminSetiingController;
 use App\Http\Controllers\Backend\ProductDetailsController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\Backend\UserRollController;
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -84,6 +86,10 @@ Route::get('/blog/single/post/{id}',[BlogController::class,'SinglePost'])->name(
 // blog-post multi-language
 Route::get('/language/english',[BlogController::class,'English'])->name('lang.english');
 Route::get('/language/bangla',[BlogController::class,'Bangla'])->name('lang.bangla');
+
+// user return order route
+Route::get('/user/retunr/order',[PaymentController::class,'ReturnOrderUser'])->name('return.order');
+Route::get('/user/request/return/{id}',[PaymentController::class,'RequestReturn'])->name('request.return');
 
 
 
@@ -195,6 +201,25 @@ Route::prefix('admin')->group(function () {
     Route::get('/today/delivary',[ReportController::class,'TodayDelivary'])->name('today.delivary');
     Route::get('/this/month',[ReportController::class,'ThisMonth'])->name('this.month');
     Route::get('/search/report',[ReportController::class,'SearchReport'])->name('search.report');
+
+    // search report route
+    Route::post('search/year',[ReportController::class,'SearchYear'])->name('serachby.year');
+    Route::post('search/month',[ReportController::class,'SearchMonth'])->name('serachby.month');
+    Route::post('search/date',[ReportController::class,'SearchDate'])->name('serachby.date');
+
+
+    // User Role Route
+    Route::get('/user/all',[UserRollController::class,'UserAll'])->name('user.all');
+    Route::get('/user/edit/{id}',[UserRollController::class,'UserEdit'])->name('user.edit');
+    Route::get('/user/delete/{id}',[UserRollController::class,'UserDelete'])->name('user.delete');
+    Route::get('/user/add',[UserRollController::class,'UserCreate'])->name('user.create');
+    Route::post('/user/store',[UserRollController::class,'UserStore'])->name('user.store');
+    Route::post('/user/update/{id}',[UserRollController::class,'UserUpdate'])->name('user.update');
+
+    // admin return all route
+    Route::get('/return/request',[ReturnController::class,'AdminReturnRequest'])->name('admin.return.rquest');
+    Route::get('/return/request/approve/{id}',[ReturnController::class,'AdminReturnRequestApprove'])->name('approve.return');
+    Route::get('/return/all-request',[ReturnController::class,'AdminReturnAllRequest'])->name('admin.return.allrequest');
 
 
 });

@@ -120,4 +120,24 @@ class PaymentController extends Controller
                        return Redirect()->to('/')->with($notification);
 
     }
+
+
+    // user return order
+
+    public function ReturnOrderUser(){
+        $order=DB::table('orders')->where('user_id',Auth::id())->orderBy('id','desc')->limit(10)->get();
+        return view('frontend.pages.returnorder',compact('order'));
+    }
+
+    public function RequestReturn($id){
+        $data=DB::table('orders')->where('id',$id)->update(['return_order'=>1]);
+
+        $notification=array(
+            'messege'=>'Order Request Done',
+            'alert-type'=>'success'
+             );
+           return Redirect()->back()->with($notification);
+
+    }
+
 }

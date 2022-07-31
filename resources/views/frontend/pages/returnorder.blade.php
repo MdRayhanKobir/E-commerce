@@ -1,10 +1,7 @@
 
 @extends('frontend.frontend_master')
 @section('content')
-
-@php
-    $order=DB::table('orders')->where('user_id',Auth::id())->orderBy('id','desc')->limit(10)->get();
-@endphp
+<script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 
 <div class="contact_form pt-5 pb-5">
     <div class="container">
@@ -14,11 +11,12 @@
                     <thead>
                       <tr>
                         <th >Payment Type</th>
-                        <th >Payment Id</th>
+                        {{-- <th >Payment Id</th> --}}
+                        <th >Return </th>
                         <th >Amount</th>
                         <th >Date</th>
                         <th >Status</th>
-                        <th >Status Code</th>
+                        {{-- <th >Status Code</th> --}}
                         <th >Action</th>
                       </tr>
                     </thead>
@@ -26,7 +24,17 @@
                      @foreach ($order as $order )
                      <tr>
                         <td>{{ $order->payment_type }}</td>
-                        <td>{{ $order->payment_id }}</td>
+                        {{-- <td>{{ $order->payment_id }}</td> --}}
+                        <td>
+                            @if ($order->return_order==0)
+                            <span class="badge badge-warning">No Request</span>
+                            @elseif ($order->return_order==1)
+                             <span class="badge badge-success">Pending</span>
+                             @elseif ($order->return_order==2)
+                             <span class="badge badge-info">Success</span>
+                             @else
+                             @endif
+                        </td>
                         <td>{{ $order->total }} Taka</td>
                         <td>{{ $order->date }}</td>
                         <td>
@@ -42,9 +50,18 @@
                              <span class="badge badge-danger">Cancel</span>
                              @endif
                         </td>
-                        <td>{{ $order->status_code }}</td>
+
+                        {{-- <td>{{ $order->status_code }}</td> --}}
                         <td>
-                            <a href="" class="btn btn-primary">View</a>
+                            @if ($order->return_order==0)
+                            <a href="{{ route('request.return',['id'=>$order->id]) }}" class="btn btn-danger" id="return">Return</a>
+                            @elseif ($order->return_order==1)
+                             <span class="badge badge-success">Pending</span>
+                             @elseif ($order->return_order==2)
+                             <span class="badge badge-info">Success</span>
+                             @else
+                             @endif
+
                         </td>
 
                       </tr>
@@ -63,7 +80,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><a href="{{ route('userpassword.change') }}">Password Change</a></li>
                             <li class="list-group-item">Edit Profile</li>
-                            <li class="list-group-item"><a href="{{ route('return.order') }}">Return Order</a></li>
+                            <li class="list-group-item"><a href="">Return Order</a></li>
                         </ul>
                         <div class="card-body">
                             <a href="{{ route('logout') }}" class="btn btn-sm btn-block btn-danger">Logout</a>
@@ -76,6 +93,8 @@
             </div>
         </div>
     </div>
+
+
 
 
 @endsection
