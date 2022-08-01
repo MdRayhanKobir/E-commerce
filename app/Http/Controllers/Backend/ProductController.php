@@ -198,16 +198,6 @@ class ProductController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
     public function ProductDelete($id){
 
         $data=Product::find($id);

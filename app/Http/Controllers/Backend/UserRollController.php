@@ -41,6 +41,7 @@ class UserRollController extends Controller
         $data->contact=$request->contact;
         $data->comment=$request->comment;
         $data->setiing=$request->setiing;
+        $data->stock=$request->stock;
         $data->other=$request->other;
         $data->type=2;
         $data->save();
@@ -85,6 +86,7 @@ class UserRollController extends Controller
         $data->contact=$request->contact;
         $data->comment=$request->comment;
         $data->setiing=$request->setiing;
+        $data->stock=$request->stock;
         $data->other=$request->other;
         $data->type=2;
         $data->save();

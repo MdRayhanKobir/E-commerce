@@ -166,6 +166,16 @@ Add User -Page
                         </div>
                          {{-- end row --}}
 
+                         <div class="row">
+                            <div class="col-lg-3">
+                                <label class="ckbox">
+                                    <input type="checkbox" name="stock" value="1">
+                                    <span>Stock</span>
+                                </label>
+
+                            </div> <!-- col-4 -->
+                         </div>
+
                         <hr>
                         <br><br>
 

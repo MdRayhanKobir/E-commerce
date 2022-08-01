@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class CuponController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function CuponView(){
 
         $cupon=Cupon::all();

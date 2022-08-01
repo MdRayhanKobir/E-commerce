@@ -92,7 +92,10 @@ Product Details -Page
                                 <button type="submit" class="button cart_button">Add to Cart</button>
                                 <div class="product_fav"><i class="fas fa-heart"></i></div>
                             </div>
-
+                            {{-- share div --}}
+                            <div class="mt-4">
+                                <div class="addthis_inline_share_toolbox_racd"></div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -133,6 +136,7 @@ Product Details -Page
                         <br>{{ $product->video_link }}</div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br>
 
+                        {{-- fb commnet div --}}
                     <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>
 
                     </div>
@@ -142,7 +146,9 @@ Product Details -Page
         </div>
     </div>
 </div>
-
-
-
+<!-- share js -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-62e74e955a098dd6"></script>
+{{-- fb comment js --}}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0" nonce="WChLd51w"></script>
 @endsection

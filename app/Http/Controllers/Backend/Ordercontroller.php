@@ -71,6 +71,20 @@ class Ordercontroller extends Controller
     }
 
     public function DelivaryDone($id){
+
+        // stock
+
+        $product=DB::table('order_details')->where('order_id',$id)->get();
+        foreach($product as $product){
+
+            DB::table('products')->where('id',$product->product_id)
+                                 ->update(['product_quantity'=>DB::raw('product_quantity -'.$product->quantity)]);
+
+        }
+        // end stock
+
+
+
         DB::table('orders')->where('id',$id)->update(['status'=>3]);
 
         $notification=array(

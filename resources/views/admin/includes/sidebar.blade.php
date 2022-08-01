@@ -172,8 +172,7 @@
           <i class="menu-item-arrow fa fa-angle-down"></i>
         </div><!-- menu-item -->
         <ul class="sl-menu-sub nav flex-column">
-            <li class="nav-item"><a href="" class="nav-link">New Message</a></li>
-            <li class="nav-item"><a href="" class="nav-link">All Message</a></li>
+            <li class="nav-item"><a href="{{ route('all.message') }}" class="nav-link">All Message</a></li>
           </ul>
       </a><!-- sl-menu-link -->
      @else
@@ -189,6 +188,20 @@
         <ul class="sl-menu-sub nav flex-column">
             <li class="nav-item"><a href="" class="nav-link">New Comment</a></li>
             <li class="nav-item"><a href="" class="nav-link">All Comment</a></li>
+          </ul>
+      </a><!-- sl-menu-link -->
+    @else
+    @endif
+    @if (Auth::user()->stock==1)
+    <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+          <span class="menu-item-label">Product Stock</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('product.stock') }}" class="nav-link">Stock</a></li>
+
           </ul>
       </a><!-- sl-menu-link -->
     @else

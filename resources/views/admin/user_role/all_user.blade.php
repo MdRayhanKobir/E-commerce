@@ -85,6 +85,11 @@ User Role -Page
                    @else
                    @endif
 
+                   @if ($users->stock==1)
+                   <span class="badge badge-success">stock</span>
+                   @else
+                   @endif
+
                    @if ($users->setiing==1)
                    <span class="badge badge-success">setting</span>
                    @else

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class SEOController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function SEOView(){
         $seo=seo::first();
         return view('admin.seo.seo',compact('seo'));

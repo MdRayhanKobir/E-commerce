@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminSetiingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
 
     public function Logout()
@@ -54,4 +58,6 @@ class AdminSetiingController extends Controller
             return redirect()->back();
         }
     }
+
+
 }

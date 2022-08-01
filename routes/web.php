@@ -3,6 +3,7 @@
 use App\Models\Admin\Cupon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdminContactController;
 use App\Http\Controllers\Backend\SEOController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\PostController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\WishlistController;
 use App\Http\Controllers\UserBackend\IndexController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -20,6 +22,7 @@ use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Backend\OderTrackingController;
 use App\Http\Controllers\Setting\AdminSetiingController;
 use App\Http\Controllers\Backend\ProductDetailsController;
+use App\Http\Controllers\Backend\ProductStockController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\UserRollController;
@@ -221,8 +224,17 @@ Route::prefix('admin')->group(function () {
     Route::get('/return/request/approve/{id}',[ReturnController::class,'AdminReturnRequestApprove'])->name('approve.return');
     Route::get('/return/all-request',[ReturnController::class,'AdminReturnAllRequest'])->name('admin.return.allrequest');
 
+    // product stock controller
+    Route::get('/product/stock',[ProductStockController::class,'ProductStock'])->name('product.stock');
 
 });
+
+    // Contact all Route
+    Route::get('/contact-page',[ContactController::class,'Contact'])->name('contact.page');
+    Route::post('/contact/store',[ContactController::class,'ContactStore'])->name('contact.store');
+
+    // admin contact route
+    Route::get('/contact-admin',[AdminContactController::class,'AdminMessage'])->name('all.message');
 
 
 
