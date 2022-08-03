@@ -32,7 +32,7 @@
                     </form>
                     <br><br>
                     <button type="submit" class="btn btn-primary btn-block"><i class="fab fa-facebook-square mr-1"></i>Login with Facbook</button>
-                    <button type="submit" class="btn btn-danger btn-block"><i class="fab fa-google mr-1"></i>Login with Google</button>
+                    <button type="submit" class="btn btn-danger btn-block"><i class="fab fa-google mr-1"></i><a href="{{ url('/auth/redirect/google') }}" class="text-white">Login with Google</a></button>
 
                 </div>
             </div>

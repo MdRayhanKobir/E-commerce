@@ -3,7 +3,6 @@
 use App\Models\Admin\Cupon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Backend\AdminContactController;
 use App\Http\Controllers\Backend\SEOController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\PostController;
@@ -11,21 +10,23 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Backend\Ordercontroller;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\GoogleSocialiteController;
 use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\UserRollController;
 use App\Http\Controllers\Backend\WishlistController;
 use App\Http\Controllers\UserBackend\IndexController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Backend\AdminContactController;
 use App\Http\Controllers\Backend\OderTrackingController;
+use App\Http\Controllers\Backend\ProductStockController;
 use App\Http\Controllers\Setting\AdminSetiingController;
 use App\Http\Controllers\Backend\ProductDetailsController;
-use App\Http\Controllers\Backend\ProductStockController;
-use App\Http\Controllers\Backend\ReportController;
-use App\Http\Controllers\Backend\ReturnController;
-use App\Http\Controllers\Backend\UserRollController;
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -102,7 +103,8 @@ Route::get('/user/request/return/{id}',[PaymentController::class,'RequestReturn'
 
 
 // Logout Route
-Route::get('/logout', [AdminSetiingController::class, 'Logout'])->name('logout');
+// Route::get('/logout', [AdminSetiingController::class, 'Logout'])->name('logout');
+Route::get('/web/dashboard', [AdminSetiingController::class, 'Logout'])->name('logout');
 
 // Admin group all route
 Route::prefix('admin')->group(function () {
@@ -235,6 +237,12 @@ Route::prefix('admin')->group(function () {
 
     // admin contact route
     Route::get('/contact-admin',[AdminContactController::class,'AdminMessage'])->name('all.message');
+
+
+    // Googgle login route
+    Route::get('/auth/redirect/{provider}', [GoogleSocialiteController::class, 'redirect']);
+    Route::get('/callback/{provider}', [GoogleSocialiteController::class, 'callback']);
+
 
 
 

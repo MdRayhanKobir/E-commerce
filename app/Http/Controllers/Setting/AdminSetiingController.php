@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers\Setting;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
 
 class AdminSetiingController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:admin');
+    // }
 
 
     public function Logout()
     {
+        // Session::flush();
         Auth::logout();
 
         $notification = array(

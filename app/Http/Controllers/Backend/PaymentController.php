@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 
+use Stripe\Charge;
+use Stripe\Stripe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Mail\InvoiceMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -37,7 +41,7 @@ class PaymentController extends Controller
     }
 
     public function StripeCharge(Request $request){
-        // $email = Auth::user()->email;
+        $email = Auth::user()->email;
           $total = $request->total;
 		// Set your secret key: remember to change this to your live secret key in production
 		// See your keys here: https://dashboard.stripe.com/account/apikeys
@@ -79,8 +83,8 @@ class PaymentController extends Controller
     $data['year'] = date('Y');
     $order_id = DB::table('orders')->insertGetId($data);
 
-//    // Mail send to user for Invoice
-// //   Mail::to($email)->send(new invoiceMail($data));
+   // Mail send to user for Invoice
+  Mail::to($email)->send(new InvoiceMail($data));
 
 
 //     /// Insert Shipping Table
