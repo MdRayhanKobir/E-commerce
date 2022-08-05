@@ -62,7 +62,7 @@
                                 <li>
                                     <a href="{{ route('dashboard') }}">
                                         <div class="user_icon"><img src="{{ asset('frontend/images/user.png')}}" alt="" style="width:24px ">
-                                        </div> Profile<i class="fas fa-chevron-down"></i>
+                                        </div> {{ Auth::user()->name }}<i class="fas fa-chevron-down"></i>
                                     </a>
 
                                     <ul>
@@ -170,6 +170,7 @@
 @include('frontend.includes.footer')
 
 </div>
+
 
 @include('frontend.includes.js')
 

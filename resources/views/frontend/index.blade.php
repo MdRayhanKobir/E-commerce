@@ -402,6 +402,7 @@
                     <div class="tabbed_container">
                         <div class="tabs clearfix tabs-right">
                             <div class="new_arrivals_title">{{ $category->category_name }}</div>
+                            <div class=""style="float:right"><a href="{{ route('category.product',['id'=>$category->id]) }}">View All</a></div>
                             <ul class="clearfix">
                                 <li class="active"></li>
                             </ul>
@@ -505,13 +506,15 @@
         ->get();
     @endphp
 
-<div class="new_arrivals">
+<div class="new_arrivals pt-0"style="">
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="tabbed_container">
                     <div class="tabs clearfix tabs-right">
                         <div class="new_arrivals_title">{{ $category->category_name }}</div>
+                        <div class=""style="float:right"><a href="{{ route('category.product',['id'=>$category->id]) }}">View All</a></div>
+
                         <ul class="clearfix">
                             <li class="active"></li>
                         </ul>
@@ -615,7 +618,7 @@
         ->get();
     @endphp
 
-<div class="new_arrivals">
+<div class="new_arrivals pt-0">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -725,7 +728,7 @@
          ->get();
      @endphp
 
- <div class="new_arrivals">
+ <div class="new_arrivals pt-0">
      <div class="container">
          <div class="row">
              <div class="col">
@@ -836,7 +839,7 @@
            ->get();
        @endphp
 
-   <div class="new_arrivals">
+   <div class="new_arrivals pt-0">
        <div class="container">
            <div class="row">
                <div class="col">
@@ -1931,7 +1934,7 @@
     </div>
 
     <!-- Reviews -->
-
+{{-- 
     <div class="reviews">
         <div class="container">
             <div class="row">
@@ -2079,11 +2082,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Recently Viewed -->
 
-    <div class="viewed">
+    {{-- <div class="viewed">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -2201,7 +2204,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Brands -->
 

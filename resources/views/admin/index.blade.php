@@ -89,7 +89,7 @@ Admin||Home
         <div class="col-sm-6 col-xl-3">
             <div class="card pd-20 rounded " style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;background-color:red">
               <div class="d-flex justify-content-between align-items-center mg-b-10">
-                <h6 class="tx-14 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Today's Return</h6>
+                <h6 class="tx-14 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Total Return</h6>
                 <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
               </div><!-- card-header -->
               <div class="d-flex align-items-center justify-content-between">
