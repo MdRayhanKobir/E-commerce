@@ -37,4 +37,35 @@ class IndexController extends Controller
         }
 
     }
+
+
+    // user profile update
+
+    public function UserUpdateProfile(){
+        $userid = Auth::user()->id;
+        $user = User::find($userid);
+        return view('profile.update_profile',compact('user'));
+    }
+
+    public function UserChangeProfile(Request $request){
+        $userid = Auth::user()->id;
+        $data = User::find($userid);
+        $data->name=$request->name;
+        $data->email=$request->email;
+
+        if ($request->file('avater')) {
+            $file = $request->file('avater');
+            @unlink(public_path('upload/user_profile/' . $data->image));
+            $fileName = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/user_profile'), $fileName);
+            $data['avater'] = $fileName;
+        }
+        $data->save();
+
+        $notification = array(
+            'messege' => 'Succesfully Profile Updated',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }

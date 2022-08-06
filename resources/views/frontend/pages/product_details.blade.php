@@ -30,7 +30,13 @@ Product Details -Page
             <!-- Description -->
             <div class="col-lg-5 order-3">
                 <div class="product_description">
-                    <div class="product_category">{{ $product->category->category_name }} <span class="bold"> ></span> {{$product->subcategory->subcategory_name  }}</div>
+
+                   @if ($product->subcategory_id==null)
+                   <div class="product_category">{{ $product->category->category_name }} <span class="bold"> ></span> </div>
+                   @else
+                   <div class="product_category">{{ $product->category->category_name }} <span class="bold"> ></span> {{$product->subcategory->subcategory_name  }}</div>
+                   @endif
+
                     <div class="product_name">{{ $product->product_name }}</div>
                     {{-- <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div> --}}
                     <div class="product_text"><p>{!! str_limit($product->product_details ,$limit=600)!!}</p></div>

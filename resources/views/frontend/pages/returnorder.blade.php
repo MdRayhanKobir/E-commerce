@@ -2,7 +2,11 @@
 @extends('frontend.frontend_master')
 @section('content')
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
-
+@php
+$userdata = DB::table('users')
+    ->where('id', Auth::user()->id)
+    ->first();
+@endphp
 <div class="contact_form pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -73,17 +77,17 @@
             </div>
             <div class="col-md-4">
                 <div class="card ">
-                    <img src="{{ asset('backend/logo/logo.png') }}" alt="" class="card-img-top rounded" style="height: 90px; width:90px; margin-left:34%;">
+                    <img src="{{ !empty($userdata->avater) ? url('upload/user_profile/' . $userdata->avater) : url('upload/no-image.jpg') }}" alt="" class="card-img-top rounded" style="height: 90px; width:90px; margin-left:34%;">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ Auth::user()->name }}
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><a href="{{ route('userpassword.change') }}">Password Change</a></li>
-                            <li class="list-group-item">Edit Profile</li>
-                            <li class="list-group-item"><a href="">Return Order</a></li>
+                            <li class="list-group-item"><a href="{{ route('updateuser.profile') }}">Edit Profile</a></li>
+                            <li class="list-group-item"><a href="{{ route('return.order') }}">Return Order</a></li>
                         </ul>
                         <div class="card-body">
-                            <a href="{{ route('logout') }}" class="btn btn-sm btn-block btn-danger">Logout</a>
+                            <a href="{{ route('logout') }}" class="btn btn-sm btn-block btn-danger ">Logout</a>
                         </div>
                     </div>
 

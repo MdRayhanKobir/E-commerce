@@ -36,6 +36,11 @@ Route::get('/', function () {
 Route::get('/password/change',[IndexController::class,'UserPassChange'])->name('userpassword.change');
 Route::post('/password/update',[IndexController::class,'UserPassUpdate'])->name('userpassword.update');
 
+// Edit profile for user all route
+Route::get('/edit/profile/update',[IndexController::class,'UserUpdateProfile'])->name('updateuser.profile');
+Route::post('/edit/profile-update',[IndexController::class,'UserChangeProfile'])->name('changeuser.profile');
+
+
 // Wishlist all Route
 Route::get('/add/wishlist/{id}',[WishlistController::class,'WishlistAdd'])->name('wishlist.add');
 
@@ -55,6 +60,9 @@ Route::get('/payment/step',[CartController::class,'PaymentPage'])->name('payment
 Route::post('/user/payment/process',[PaymentController::class,'Payment'])->name('payment.process');
 // payment stripe charge
 Route::post('/user/stripe/charge',[PaymentController::class,'StripeCharge'])->name('stripe.charge');
+
+// payment oncash charge
+Route::post('/user/oncash/charge',[PaymentController::class,'OnCashCharge'])->name('on.cash');
 
 
 // details wishlist
@@ -242,6 +250,8 @@ Route::prefix('admin')->group(function () {
     // Googgle login route
     Route::get('/auth/redirect/{provider}', [GoogleSocialiteController::class, 'redirect']);
     Route::get('/callback/{provider}', [GoogleSocialiteController::class, 'callback']);
+
+
 
 
 

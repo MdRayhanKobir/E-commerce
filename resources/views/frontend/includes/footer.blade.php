@@ -1,17 +1,19 @@
 <footer class="footer" style="background-color: rgba(60, 99, 130,0.3)">
     <div class="container">
         <div class="row">
-
+@php
+    $setting=DB::table('setiings')->first();
+@endphp
             <div class="col-lg-3 footer_col">
                 <div class="footer_column footer_contact">
                     <div class="logo_container">
                         <div class="logo"><a href="#"><img src="{{ asset('backend/logo/logo.png') }}" alt="" style="width:150px "></a></div>
                     </div>
                     <div class="footer_title">Got Question? Call Us 24/7</div>
-                    <div class="footer_phone">+38 068 005 3570</div>
+                    <div class="footer_phone">{{ $setting->phone }}</div>
                     <div class="footer_contact_text">
-                        <p>17 Princess Road, London</p>
-                        <p>Grester London NW18JR, UK</p>
+                        <p>{{ $setting->address }}</p>
+
                     </div>
                     <div class="footer_social">
                         <ul>
@@ -27,44 +29,39 @@
 
             <div class="col-lg-2 offset-lg-2">
                 <div class="footer_column">
-                    <div class="footer_title">Find it Fast</div>
+                    <div class="footer_title">Use Full Link</div>
                     <ul class="footer_list">
-                        <li><a href="#">Computers & Laptops</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Smartphones & Tablets</a></li>
-                        <li><a href="#">TV & Audio</a></li>
-                    </ul>
-                    <div class="footer_subtitle">Gadgets</div>
-                    <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-2">
-                <div class="footer_column">
-                    <ul class="footer_list footer_list_2">
-                        <li><a href="#">Video Games & Consoles</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Computers & Laptops</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-2">
-                <div class="footer_column">
-                    <div class="footer_title">Customer Care</div>
-                    <ul class="footer_list">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order Tracking</a></li>
-                        <li><a href="#">Wish List</a></li>
-                        <li><a href="#">Customer Services</a></li>
-                        <li><a href="#">Returns / Exchange</a></li>
+                        <li><a href="#">About Us</a></li>
                         <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Product Support</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+
+                    {{-- <ul class="footer_list">
+                        <li><a href="#">Car Electronics</a></li>
+                    </ul> --}}
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="footer_column">
+                    <div class="footer_title">Customer Service</div>
+                    <ul class="footer_list ">
+                        <li><a href="#">Return & Refund Policy</a></li>
+                        <li><a href="#">Support Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Terms and conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="footer_column">
+                    <div class="footer_title">My Account</div>
+                    <ul class="footer_list">
+                        <li><a href="#">Signup / Login</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -82,7 +79,7 @@
 
                 <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                     <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">Easyfind</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </div>
                     <div class="logos ml-sm-auto">

@@ -17,9 +17,12 @@
     <div class="top_bar" style="background-color: rgba(130, 204, 221,.2)">
         <div class="container">
             <div class="row">
+                @php
+                    $setting=DB::table('setiings')->first();
+                @endphp
                 <div class="col d-flex flex-row">
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/phone-call.png') }}" alt=""></div><a href="tel:01727038318">01727038318</a></div>
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/email.png') }}" alt=""></div><a href="mailto:fastsales@gmail.com">easyfind@gmail.com</a></div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/phone-call.png') }}" alt=""></div><a href="tel:01727038318">{{ $setting->phone }}</a></div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/email.png') }}" alt=""></div><a href="mailto:fastsales@gmail.com">{{ $setting->email }}</a></div>
                     <div class="top_bar_content ml-auto">
 
                     <div class="top_bar_menu">
@@ -60,8 +63,13 @@
                             @auth()
                             <ul class="standard_dropdown top_bar_dropdown">
                                 <li>
+                                    @php
+                                        $userdata = DB::table('users')
+                                                        ->where('id', Auth::user()->id)
+                                                        ->first();
+                                    @endphp
                                     <a href="{{ route('dashboard') }}">
-                                        <div class="user_icon"><img src="{{ asset('frontend/images/user.png')}}" alt="" style="width:24px ">
+                                        <div class="user_icon"><img src="{{ !empty($userdata->avater) ? url('upload/user_profile/' . $userdata->avater) : url('upload/no-image.jpg') }}" alt="" style="width:24px; border-radius:50%  ">
                                         </div> {{ Auth::user()->name }}<i class="fas fa-chevron-down"></i>
                                     </a>
 
@@ -117,7 +125,6 @@
                                                 @endforeach
                                             </ul>
                                         </div>
-
                                     </div>
                                     <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('frontend/images/search.png') }}" alt=""></button>
                                 </form>

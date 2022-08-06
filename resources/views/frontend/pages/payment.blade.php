@@ -160,8 +160,8 @@
             <li><input type="radio" name="payment" id="" value="paypal">
                 <img src="{{ asset('frontend/images/paypal.png') }}" alt="" style="width:100px;height:60px; ">
             </li>
-            <li><input type="radio" name="payment" id="" value="ideal">
-                <img src="{{ asset('frontend/images/mollie.png') }}" alt="" style="width:100px;height:60px; ">
+            <li><input type="radio" name="payment" id="" value="oncash">
+                <img src="{{ asset('frontend/images/cashon.jpg') }}" alt="" style="width:100px;height:60px; ">
             </li>
 
         </ul>

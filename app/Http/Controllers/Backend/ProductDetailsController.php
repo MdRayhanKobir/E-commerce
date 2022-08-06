@@ -70,19 +70,23 @@ class ProductDetailsController extends Controller
 
     //============ subcategory ==========
     public function SubcategoryProduct($id){
+
+        $headsubcate=DB::table('sub_categories')->where('id',$id)->get();
+
         $product=DB::table('products')->where('subcategory_id',$id)->paginate(10);
         $category=Category::all();
         $brand=DB::table('products')->where('subcategory_id',$id)->select('brand_id')->groupBy('brand_id')->get();
 
-        return view('frontend.pages.all_product',compact('product','category','brand'));
+        return view('frontend.pages.all_product',compact('product','category','brand','headsubcate'));
     }
 
     // ============category =========
 
     public function CategoryProduct($id){
+        $headcate=DB::table('categories')->where('id',$id)->get();
         $product=DB::table('products')->where('category_id',$id)->paginate(5);
         $category=Category::all();
         $brand=Brand::all();
-        return view('frontend.pages.all_category',compact('product','category','brand'));
+        return view('frontend.pages.all_category',compact('product','category','brand','headcate'));
     }
 }
