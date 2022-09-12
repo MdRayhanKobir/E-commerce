@@ -42,7 +42,8 @@ class ProductController extends Controller
     public function ProductAdd(){
         $category=Category::all();
         $brand=Brand::all();
-        return view('admin.product.product_add',compact('category','brand'));
+        $subcategory=SubCategory::all();
+        return view('admin.product.product_add',compact('category','brand','subcategory'));
     }
 
 

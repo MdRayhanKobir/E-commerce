@@ -27,6 +27,7 @@ use App\Http\Controllers\Backend\OderTrackingController;
 use App\Http\Controllers\Backend\ProductStockController;
 use App\Http\Controllers\Setting\AdminSetiingController;
 use App\Http\Controllers\Backend\ProductDetailsController;
+use App\Http\Controllers\OthersPageController;
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -45,7 +46,7 @@ Route::post('/edit/profile-update',[IndexController::class,'UserChangeProfile'])
 Route::get('/add/wishlist/{id}',[WishlistController::class,'WishlistAdd'])->name('wishlist.add');
 
 // Add to Cart all route
-Route::get('/add/cart/{id}',[CartController::class,'AddCart'])->name('add.cart');
+Route::get('/add/cart/{id}',[CartController::class,'APaymentddCart'])->name('add.cart');
 Route::get('/cart/show',[CartController::class,'ShowCart'])->name('cart.show');
 Route::get('/cart/remove/{id}',[CartController::class,'CartRemove'])->name('cart.remove');
 Route::post('/cart/update/item',[CartController::class,'CartItemUpdate'])->name('update.cartitem');
@@ -146,7 +147,7 @@ Route::prefix('admin')->group(function () {
     // Cupon all route
     Route::get('/cupon/view',[CuponController::class,'CuponView'])->name('cupon.view');
     Route::post('/cupon/store',[CuponController::class,'CuponStore'])->name('cupon.store');
-    Route::get('/cupon/edit/{id}',[CuponController::class,'CuponEdit'])->name('cupon.edit');
+    Route::get('/cupon/edit/{id}',[CuponContProductEditroller::class,'CuponEdit'])->name('cupon.edit');
     Route::post('/cupon/update/{id}',[CuponController::class,'CuponUpdate'])->name('cupon.update');
     Route::get('/cupon/delete/{id}',[CuponController::class,'CuponDelete'])->name('cupon.delete');
 
@@ -250,6 +251,14 @@ Route::prefix('admin')->group(function () {
     // Googgle login route
     Route::get('/auth/redirect/{provider}', [GoogleSocialiteController::class, 'redirect']);
     Route::get('/callback/{provider}', [GoogleSocialiteController::class, 'callback']);
+
+    // Product Search route
+    Route::post('/product/search',[ContactController::class,'Search'])->name('product.search');
+
+
+    // Others Page Controller
+    Route::get('/about-page',[OthersPageController::class,'About'])->name('about.page');
+
 
 
 

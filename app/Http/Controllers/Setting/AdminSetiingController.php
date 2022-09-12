@@ -12,10 +12,10 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AdminSetiingController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth:admin');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
 
     public function Logout()

@@ -31,15 +31,13 @@
                 <div class="footer_column">
                     <div class="footer_title">Use Full Link</div>
                     <ul class="footer_list">
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{{ route('about.page') }}">About Us</a></li>
                         <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ route('contact.page') }}">Contact Us</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
 
-                    {{-- <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
-                    </ul> --}}
+
                 </div>
             </div>
 
@@ -50,7 +48,6 @@
                         <li><a href="#">Return & Refund Policy</a></li>
                         <li><a href="#">Support Policy</a></li>
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Hardware</a></li>
                         <li><a href="#">Terms and conditions</a></li>
                     </ul>
                 </div>
@@ -60,7 +57,7 @@
                 <div class="footer_column">
                     <div class="footer_title">My Account</div>
                     <ul class="footer_list">
-                        <li><a href="#">Signup / Login</a></li>
+                        <li><a href="{{ route('login') }}">Signup / Login</a></li>
 
                     </ul>
                 </div>

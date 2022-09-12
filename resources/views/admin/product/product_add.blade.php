@@ -93,6 +93,10 @@ Product Add -Page
                                 <div class="form-group mg-b-10-force">
                                     <label class="form-control-label">Sub Category: <span class="tx-danger">*</span></label>
                                     <select class="form-control select2"name="subcategory_id">
+                                        <option label="Choose subCategory"></option>
+                                        @foreach ($subcategory as $subcategories)
+                                        <option value="{{ $subcategories->id }}">{{ $subcategories->subcategory_name }}</option>
+                                    @endforeach
 
                                     </select>
                                 </div>

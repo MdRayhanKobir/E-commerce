@@ -115,7 +115,7 @@ return response(array(
             $data['weight']=1;
             $data['options']['image']=$product->image_one;
             $data['options']['color']=$request->color;
-            $data['options']['size']=$request->size;;
+            $data['options']['size']=$request->size;
             Cart::add($data);
 
             $notification = array(

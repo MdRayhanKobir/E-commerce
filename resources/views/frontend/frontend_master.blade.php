@@ -110,21 +110,36 @@
                     <div class="header_search">
                         <div class="header_search_content">
                             <div class="header_search_form_container">
-                                <form action="#" class="header_search_form clearfix">
-                                    <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+                                <form action="{{ route('product.search') }}" method="POST" class="header_search_form clearfix">
+                                    @csrf
+                                    <input type="search" required="required" name="search" class="header_search_input" placeholder="Search for products...">
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list">
-                                            <span class="custom_dropdown_placeholder clc">All Categories</span>
-                                            <i class="fas fa-chevron-down"></i>
-                                            <ul class="custom_list clc">
+                                            <span class="custom_dropdown_placeholder clc">
                                                 @php
+                                                $cat=DB::table('categories')->get();
+                                               @endphp
+                                                <select class="form-control"style="height:50px;background:none;border:none;">
+
+                                                    <option hidden>Category</option>
+
+                                                    @foreach ($cat as $cat )
+                                                    <option>{{$cat->category_name}}</option>
+                                                    @endforeach
+
+                                                  </select>
+                                            </span>
+                                            <ul class="custom_list clc">
+                                                {{-- @php
                                                 $cat=DB::table('categories')->get();
                                                @endphp
                                                 @foreach ($cat as $cat )
                                                 <li><a class="clc" href="#">{{ $cat->category_name }}</a></li>
-                                                @endforeach
+                                                @endforeach --}}
                                             </ul>
                                         </div>
+
+
                                     </div>
                                     <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('frontend/images/search.png') }}" alt=""></button>
                                 </form>

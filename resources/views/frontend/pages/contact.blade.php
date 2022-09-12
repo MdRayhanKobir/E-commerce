@@ -81,13 +81,7 @@ Contact  -Pages
 
 	<!-- Map -->
 
-	<div class="contact_map">
-		<div id="google_map" class="google_map">
-			<div class="map_container">
-				<div id="map"></div>
-			</div>
-		</div>
-	</div>
+
 
     <script src="{{ asset('frontend/js/contact_custom.js') }}"></script>
 

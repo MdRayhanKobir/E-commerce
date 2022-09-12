@@ -9,10 +9,10 @@ use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function Contact(){
         return view('frontend.pages.contact');
@@ -31,6 +31,17 @@ class ContactController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    }
+
+    // search function
+
+    public function Search(Request $request){
+        $search=$request->search;
+        $product=DB::table('products')
+                        ->where('product_name','LIKE',"%$search%")
+                        ->paginate(20);
+        return view('frontend.pages.search',compact('product'));
+
     }
 
 

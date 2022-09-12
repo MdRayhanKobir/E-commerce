@@ -8,7 +8,7 @@
           </nav>
           <div class="card" style="width:100%">
             <div class="card-body">
-              <h5 class="card-title">Paaword Update</h5>
+              <h5 class="card-title">Password Update</h5>
             </div>
             <form class="forms-sample" action="{{ route('admin.password.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
